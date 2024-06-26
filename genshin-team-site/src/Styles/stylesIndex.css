@@ -1,0 +1,69 @@
+::-webkit-scrollbar{
+	display: none;
+	width: 0;
+}
+
+body{
+	overflow: hidden;
+}
+
+.body-wrapper{
+	display:flex;
+	font-size: 28px;
+}
+
+.team-list-tab{
+	color: white;
+	background-color: #222222;
+	width: 525px;
+	padding: 16px;
+	height: 100dvh;
+	
+}
+
+.team-container{
+	background-color: #444444;
+	color: white;
+	margin-right: 8px;	
+	margin-top: 12px;
+}
+
+.team-container:hover{
+	border: 2px solid white;
+	transform: scale(1.02);
+	cursor: pointer;
+}
+
+.container-character-deck{
+	display: flex;
+	column-gap: 8px;
+	padding: 0 8px;
+}
+
+.container-character-portrait{
+	height: 94px;
+	width: 94px;
+	z-index: 3;
+}
+.container-character-portrait>img{
+	z-index: 3;
+	width: 94px;
+	height: 76px;
+	object-fit: cover;
+	object-position: 0 100%;
+}
+
+.container-character-bg{
+	z-index: -1;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.2);
+	width: 64px;
+	height: 64px;
+	position: relative;
+	top: -71px;
+	left: 14px;
+}
+
+.new-button{
+	
+}
