@@ -17,8 +17,8 @@ body{
 	background-color: #222222;
 	width: 525px;
 	padding: 16px;
-	height: 100dvh;
-	
+	height: 100vh;
+	overflow-y: auto;
 }
 
 .team-container{
@@ -32,6 +32,13 @@ body{
 	border: 2px solid white;
 	transform: scale(1.02);
 	cursor: pointer;
+}
+
+.team-container:active, .team-container-true{
+	border: 2px solid white;
+	transform: scale(1.02);
+	background-color: #ebe4d8;
+	color: black;
 }
 
 .container-character-deck{
@@ -53,6 +60,23 @@ body{
 	object-position: 0 100%;
 }
 
+.container-character-portrait>img:hover{
+	transform: scale(1.24);
+}
+
+.container-character-portrait>img[src="./Portraits/AddCharacter.png"]{
+	z-index: 3;
+	width: 64px;
+	height: 76px;
+	object-fit: contain;
+}
+
+.container-character-portrait>img[src="./Portraits/AddCharacter.png"]:hover{
+	position: relative;
+	width: 64px;
+	right: 2px;
+}
+
 .container-character-bg{
 	z-index: -1;
 	border-radius: 50%;
@@ -63,7 +87,18 @@ body{
 	top: -71px;
 	left: 14px;
 }
+.container-character-hover{
+	position: relative;
+	top: -136px;
+	background-color: transparent;
+}
 
 .new-button{
-	
+	margin-bottom: 52px;
+}
+
+.team-name{
+	width: 72%;
+	padding-left: 12px;
+	border: 1px solid red;
 }
