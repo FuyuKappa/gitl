@@ -1,20 +1,24 @@
 import {default as Name} from "./TeamName";
 import {default as CharacterPortrait} from "./ContainerCharacterPortrait";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
-export default function TeamContainer(props){
-	{/*Have states, prop
-	for team name and characters*/}
+export default function TeamContainer({team}){
+	const {name, id, characters, active} = team;
+	const previewTeam = useContext(UserContext).previewTeam;
+	const toggleTeamActive = useContext(UserContext).toggleTeamActive;
+	const className = "team-container team-container-" + active;
 	
-	let characterList = [];
-	if(props.characters){
-		props.characters.forEach((character) =>{
-			characterList.push(<CharacterPortrait character={character} />);
-		});
+	let characterList = [];	
+	for(let i = 0; i < 4; i++){
+		let character = characters[i] ? characters[i] : "AddCharacter";
+		characterList.push(<CharacterPortrait  character={character} key={crypto.randomUUID()} />)
 	}
+	
 	return(
-		<div className="team-container" id={props.id}>
-		<Name name = {props.name}/>
-			{/*Resonance deck (component = resonance deck)
+		<div className={className} onClick={() => {previewTeam({name, id, characters}); toggleTeamActive(id)}}>
+			<Name teamName={name}/>
+				{/*Resonance deck (component = resonance deck)
 				//resonance icons
 				//character overview (map)
 				//<CharacterPortrait /> 4x (component = container-character-portrait)*/}
