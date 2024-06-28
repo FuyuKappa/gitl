@@ -19,7 +19,7 @@ export default function TeamContainer({team}){
 		<div className={className} onClick={() => {previewTeam({name, id, characters}); toggleTeamActive(id)}}>
 			<Name teamName={name}/>
 			<hr style={{margin: '4px 8px'}} />
-				{/*Resonance deck (component = resonance deck)
+				{/*Resnance deck (component = resonance deck)
 				//resonance icons
 				//character overview (map)
 				//<CharacterPortrait /> 4x (component = container-character-portrait)*/}
