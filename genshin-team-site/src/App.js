@@ -72,10 +72,12 @@ export default function App() {
 	
 	function previewTeam(teamStats){
 		setTeam(teamStats);
+		console.log(teamStats);
+		console.log("preview team called");
 	}
 	
   return (
-		<UserContext.Provider  value={{previewTeam, teams, addToList, toggleTeamActive}}>
+		<UserContext.Provider  value={{previewTeam, teams, setTeams ,addToList, toggleTeamActive, currentTeamID: team.id}}>
 			<div className="body-wrapper">
 				<TeamListTab />
 				<TeamScreen currentTeam={team} delete={deleteFromList}/>
