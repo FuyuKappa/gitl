@@ -31,7 +31,7 @@ export default function TeamScreen(props){
 					//Notes
 			*/}
 			<TeamName teamName={team.name}/>
-			<CharacterDeck team={team.characters}/>
+			<CharacterDeck props={{team: team.characters, notes: team.notes}}/>
 			<DeleteButton />
 		</div>
 	)

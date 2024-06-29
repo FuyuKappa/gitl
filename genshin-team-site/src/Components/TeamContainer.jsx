@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { UserContext } from "../App";
 
 export default function TeamContainer({team}){
-	const {name, id, characters, active} = team;
+	const {name, id, characters, notes, active} = team;
 	const previewTeam = useContext(UserContext).previewTeam;
 	const toggleTeamActive = useContext(UserContext).toggleTeamActive;
 	const className = "team-container team-container-" + active;
@@ -16,7 +16,7 @@ export default function TeamContainer({team}){
 	}
 	
 	return(
-		<div className={className} onClick={() => {previewTeam({name, id, characters}); toggleTeamActive(id)}}>
+		<div className={className} onClick={() => {previewTeam({name, id, characters, notes}); toggleTeamActive(id)}}>
 			<Name teamName={name}/>
 			<hr style={{margin: '4px 8px'}} />
 				{/*Resnance deck (component = resonance deck)
