@@ -2,6 +2,7 @@
 	flex-grow: 1;
 	background-color: #333f50;
 	color: white;
+	overflow: auto;
 }
 
 .edit-btn{
@@ -56,4 +57,59 @@
 	stroke: red;
 	stroke-width:3;
 	stroke-linecap: round;
+}
+
+.character-deck{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	column-gap: 8px;
+	border: 1px solid red;
+	margin: 0px 16px;
+}
+
+.team-character-section{
+	flex-grow: 1;
+	border: 1px solid red;
+	width: fit-content;
+	max-width: 200px;
+	min-width: 200px;
+}
+
+.section-character-name{
+	position: relative;
+	z-index: 3;
+}
+.section-character-portrait{
+	z-index: 1;
+	position: relative;
+	top: -37.6px;
+}
+
+.section-character-portrait>.banner{
+	object-fit: cover;
+	object-position: 0 10%;
+	width: 100%;
+	aspect-ratio: 9/16;
+}
+
+.section-character-notes{
+	font-size: 0.8em;
+	position: relative;
+	top: -37.6px;
+	background-color: rgba(0,0,2,0.2);
+	margin: 0 8px;
+}
+
+@media only screen and (max-width: 1419px){
+	.team-character-section{
+		width: fit-content;
+		max-width: 40%;
+		min-width: 40%;
+	}
+}
+
+@media only screen and (max-width: 1px){
+	
 }
