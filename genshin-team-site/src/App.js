@@ -15,6 +15,12 @@ export default function App() {
 			"Yelan",
 			"Barbara"
 		],
+		notes:[
+			"This HU tao",
+			"This is Yanfei, she hits",
+			"Yelan is vape support",
+			"Barbara keeps the team alive"
+		],
 		active: false
 	}
 	let test1 = {
@@ -23,8 +29,14 @@ export default function App() {
 		characters: [
 			"Ganyu",
 			"Hu Tao",
-			"Yanfei",
+			"Raiden Shogun",
 			"Barbara"
+		],
+		notes:[
+			"Ganyu is cryo",
+			"Hu Tao will melt",
+			"Raiden is skill support",
+			"Barbara keeps the team alive"
 		],
 		active: false
 	}
@@ -32,10 +44,16 @@ export default function App() {
 		name: "New Team",
 		id: crypto.randomUUID(),
 		characters: [
-			"",
+			"Wriothesley",
 			"Hu Tao",
-			"",
+			"Al Haitham",
 			"Barbara"
+		],
+		notes:[
+			"This is just a test",
+			"",
+			"Barbara will be blank",
+			""
 		],
 		active: false		
 	}
@@ -43,7 +61,7 @@ export default function App() {
 	const [teams, setTeams] = useState([test, test1, test2]);
 	
 	function addToList(){
-		const newTeam = { name: "New Team", id: crypto.randomUUID(), characters: [], active: true };
+		const newTeam = { name: "New Team", id: crypto.randomUUID(), characters: [], notes: ["","","",""] ,active: true };
 		setTeams(() => { return [...teams, newTeam]});
 		previewTeam(newTeam);
 		toggleTeamActive(newTeam.id);
