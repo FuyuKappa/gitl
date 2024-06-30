@@ -10,7 +10,7 @@ export default function TeamScreenCharacterSection({character, note}){
 				</center>
 			</div>
 			<div className="section-character-portrait">
-				<img className="banner" src={"./Banner/" + character + " Banner.png"}></img>
+				<img className="banner" src={"./Banner/" + character + ".png"}></img>
 			</div>
 			<div className="section-character-notes">
 				{note}
