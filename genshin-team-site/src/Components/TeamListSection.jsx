@@ -10,7 +10,7 @@ export default function TeamListSection(){
 	return(
 		<div className="team-list-section">
 			{teams.map((team) =>{
-				return <Container team={team} />
+				return <Container team={team} key={crypto.randomUUID()}/>
 			})}
 			<NewTeamButton addFunction={addToList} />
 		</div>
