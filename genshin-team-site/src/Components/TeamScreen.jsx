@@ -9,7 +9,7 @@ export default function TeamScreen(props){
 	
 	function DeleteButton(){
 		return(
-			<button onClick={() => props.delete(team.id)}>
+			<button className="delete-button" onClick={() => props.delete(team.id)}>
 				Delete Team
 			</button>
 		)
@@ -30,7 +30,7 @@ export default function TeamScreen(props){
 					//Character portrait
 					//Notes
 			*/}
-			<TeamName teamName={team.name}/>
+			<TeamName teamName = {team.name}/>
 			<CharacterDeck props={{team: team.characters, notes: team.notes}}/>
 			<DeleteButton />
 		</div>
