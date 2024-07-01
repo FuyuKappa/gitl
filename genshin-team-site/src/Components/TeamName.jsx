@@ -1,14 +1,21 @@
 import { useState, useContext, useEffect } from 'react';
 import { UserContext } from "../App";
 
-export default function TeamName({teamName}){	
+export default function TeamName(props){
+	//console.log(props);
+	//let {teamName, containerID} = props;
+	let teamName = props.teamName;
+	let containerID = props.id;
 	const [editing, setEditing] = useState(false);
 	const [newName, setNewName] = useState("");
 	
 	const context = useContext(UserContext);
 	const teamID = context.currentTeamID;
+	const toggleTeamActive = context.toggleTeamActive;
+	const previewTeam = context.previewTeam;
 	
 	function toggleEdit(e){
+		e.stopPropagation();
 		setEditing(() => {return true});
 		setNewName(() => {return teamName})
 	}
@@ -20,6 +27,9 @@ export default function TeamName({teamName}){
 	
 	function confirmEdit(id, newName, e){
 		e.stopPropagation();
+		if(!id && id !== containerID) id = containerID;
+		else if(id && id !== containerID && containerID) id = containerID;
+		
 		context.setTeams(currentTeams =>{
 			return currentTeams.map(currentTeam => {
 				if(currentTeam.id === id)
@@ -28,10 +38,11 @@ export default function TeamName({teamName}){
 					return currentTeam;
 			});
 		});
+		
 		let newTeam = context.teams.filter(team=>team.id===id)[0];
-		newTeam.name = newName;
-		console.log(newTeam);
-		context.previewTeam(newTeam);
+		newTeam.name = newName;		
+		toggleTeamActive(id);
+		previewTeam(newTeam);
 		setEditing(() => {return false});
 	}
 	
