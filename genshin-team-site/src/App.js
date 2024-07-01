@@ -45,7 +45,7 @@ export default function App() {
 		id: crypto.randomUUID(),
 		characters: [
 			"Wriothesley",
-			"Hu Tao",
+			"",
 			"Al Haitham",
 			"Barbara"
 		],
@@ -90,8 +90,6 @@ export default function App() {
 	
 	function previewTeam(teamStats){
 		setTeam(teamStats);
-		console.log(teamStats);
-		console.log("preview team called");
 	}
 	
   return (
