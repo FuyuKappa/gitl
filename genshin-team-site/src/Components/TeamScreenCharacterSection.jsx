@@ -1,17 +1,15 @@
-import { useState } from "react";
+import { useState} from "react";
 
-export default function TeamScreenCharacterSection({character, note}){
+export default function TeamScreenCharacterSection({character, note, index}){
 	const [currentNote, setNote] = useState(note);
+	let noteID = "note" + index; 
 	
-	function NotesForm(){
-		return;
-	}	
+	function updateNote(e){
+		setNote(() => {return e.target.value});
+	}
 	
 	return(
 		<div className="team-character-section">
-				{/*Place character name*/}
-				{/*Place character portrait*/}
-				{/*Place character note*/}
 			<div className="section-character-name">
 				<center>
 					{character}
@@ -19,7 +17,7 @@ export default function TeamScreenCharacterSection({character, note}){
 			</div>
 			
 			<div className="section-character-portrait">
-				 <img className="banner" src={"./Banner/" + character + ".png"}></img>
+				 <img className="banner" src={"./Banner/" + character + ".png"} alt={character}></img>
 			</div>
 			
 			<div className="bg-gradient-up"></div>
@@ -29,9 +27,8 @@ export default function TeamScreenCharacterSection({character, note}){
 					Notes:
 				</div>
 				<div className="section-character-notes">
-					<textarea name="newNote" className="notes-form" value={currentNote} onChange={(e) => setNote(e.target.value)}>
+					<textarea name="newNote" className="notes-form" value={currentNote} onChange={(e) => updateNote(e)} name={noteID} placeholder="Add character notes here.">
 					</textarea>
-					{/*Function to display "Character notes" if no notes are found*/}
 				</div>
 			</div>
 			
