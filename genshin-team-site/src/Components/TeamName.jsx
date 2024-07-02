@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { UserContext } from "../App";
 
 export default function TeamName(props){
@@ -49,20 +49,22 @@ export default function TeamName(props){
 	if(editing){
 		return(
 			<div className="team-name">
-				<input type="text" value={newName} onChange={e => setNewName(e.target.value)} onClick = {event => event.stopPropagation()}>
-				</input>
-				<div className="edit-btn check" onClick={(e) => confirmEdit(teamID, newName, e)}>
-					<svg width="16" height="16" className="check-mark" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-						<line className="check-mark-line" x1="1.5" y1="8" x2="5" y2="13.5" />
-						<line className="check-mark-line" x1="5" y1="13.5" x2="13.5" y2="2" />
-					</svg>
-				</div>
-				<div className="edit-btn cross" onClick={(e) => cancelEdit(e)}>
-					<svg width="16" height="16" className="cross-mark" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-						<line className="cross-mark-line" x1="2.5" y1="2.5" x2="14" y2="14" />
-						<line className="cross-mark-line" x1="14" y1="2" x2="2.5" y2="14" />
-					</svg>
-				</div>
+				<form onSubmit={(e) => confirmEdit(teamID, newName, e)}>
+					<input type="text" value={newName} onChange={e => setNewName(e.target.value)} onClick = {event => event.stopPropagation()}>
+					</input>
+					<div className="edit-btn check" onClick={(e) => confirmEdit(teamID, newName, e)}>
+						<svg width="16" height="16" className="check-mark" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+							<line className="check-mark-line" x1="1.5" y1="8" x2="5" y2="13.5" />
+							<line className="check-mark-line" x1="5" y1="13.5" x2="13.5" y2="2" />
+						</svg>
+					</div>
+					<div className="edit-btn cross" onClick={(e) => cancelEdit(e)}>
+						<svg width="16" height="16" className="cross-mark" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+							<line className="cross-mark-line" x1="2.5" y1="2.5" x2="14" y2="14" />
+							<line className="cross-mark-line" x1="14" y1="2" x2="2.5" y2="14" />
+						</svg>
+					</div>
+				</form>
 			</div>
 		)
 	}
