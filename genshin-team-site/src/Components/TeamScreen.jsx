@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../App";
 import '../Styles/stylesTeamScreen.css';
 import { default as CharacterDeck } from "./TeamScreenCharacterDeck";
@@ -7,6 +7,8 @@ import { default as TeamName } from "./TeamName";
 export default function TeamScreen(props){
 	let team = props.currentTeam;
 	const context = useContext(UserContext);
+	const [description, setDescription] = useState(team.description);
+	const [rotation, setRotation] = useState(team.rotation);
 	
 	function DeleteButton(){
 		return(
@@ -15,6 +17,11 @@ export default function TeamScreen(props){
 			</button>
 		)
 	}
+	
+	useEffect(()=>{
+		setDescription(team.description);
+		setRotation(team.rotation);
+	}, [team]);
 	
 	function saveTeam(e){
 		e.preventDefault();
@@ -27,13 +34,13 @@ export default function TeamScreen(props){
 		context.setTeams(currentTeams=>{
 			return currentTeams.map((currentTeam) =>{
 				if(currentTeam.id === team.id)
-					return {...team, notes: notes}
+					return {...team, notes: notes, description: description, rotation: rotation}
 				return currentTeam;
 			}) 
 		})
 		
 		//update the team screen
-		context.setTeam(() => {return {...team, notes: notes}});
+		context.setTeam(() => {return {...team, notes: notes, description: description, rotation: rotation}});
 		
 		//update the active
 		context.toggleTeamActive(team.id);
@@ -56,8 +63,25 @@ export default function TeamScreen(props){
 	return(
 		<div className="team-screen">
 				<TeamName teamName = {team.name}/>
-			<form onSubmit={(e)=>saveTeam(e)}>
+			<form className="team-screen-form" onSubmit={(e)=>saveTeam(e)}>
+				<center style={{width: "140%"}}>
+				<hr style={{border: "1px solid white", width: "100%"}}/>
+				</center>
+				
+				<div className="description-section">
+					<label htmlFor="description">Team Description: </label>
+					<textarea className="description-text" name="description" id="description"value={description} onChange={(e) => setDescription(e.target.value)}>
+					</textarea>
+				</div>
+				
 				<CharacterDeck props={{team: team.characters, notes: team.notes}}/>
+				
+				<div className="rotation-section">
+					<label htmlFor="rotation">Rotation: </label>
+					<textarea className="rotation-text" name="rotation" id="rotation" value={rotation} onChange={(e) => setRotation(e.target.value)}>
+					</textarea>
+				</div>
+				
 				<SaveButton />
 				<DeleteButton />
 			</form>
