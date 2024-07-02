@@ -7,7 +7,6 @@ export default function TeamScreenCharacterDeck({props}){
 	for(let i = 0; i < 4; i++){
 		let character = team[i] ? team[i] : "Blank";
 		let note = notes[i];
-		let index = i;
 		let key = crypto.randomUUID();
 		characterList.push(<CharacterSection character={character} note={note} key={key} index={i}/>);
 	}
