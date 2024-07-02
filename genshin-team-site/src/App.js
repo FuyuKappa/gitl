@@ -21,6 +21,8 @@ export default function App() {
 			"Yelan is vape support",
 			"Barbara keeps the team alive"
 		],
+		description: "This is the best team.",
+		rotation: "Yelan E Q > Barbara E > Hu Tao E Then NC any amount of times hell yeah",
 		active: false
 	}
 	let test1 = {
@@ -38,6 +40,8 @@ export default function App() {
 			"Raiden is skill support",
 			"Barbara keeps the team alive"
 		],
+		description: "This is a test team. But technically this is a melt comp with ganyu as the off-field cryo applier.",
+		rotation: "This team rotates",
 		active: false
 	}
 	let test2 = {
@@ -55,13 +59,15 @@ export default function App() {
 			"Barbara will be blank",
 			""
 		],
+		description: "This is a test team with a blank character",
+		rotation: "This team CANNOT rotate.",
 		active: false		
 	}
 	
 	const [teams, setTeams] = useState([test, test1, test2]);
 	
 	function addToList(){
-		const newTeam = { name: "New Team", id: crypto.randomUUID(), characters: [], notes: ["","","",""] ,active: true };
+		const newTeam = { name: "New Team", id: crypto.randomUUID(), characters: [], notes: ["","","",""], description: "", rotation: "", active: true };
 		setTeams(() => { return [...teams, newTeam]});
 		previewTeam(newTeam);
 		toggleTeamActive(newTeam.id);
