@@ -93,7 +93,7 @@ export default function App() {
 	}
 	
   return (
-		<UserContext.Provider  value={{previewTeam, teams, setTeams ,addToList, toggleTeamActive, currentTeamID: team.id}}>
+		<UserContext.Provider  value={{previewTeam, teams, setTeams, setTeam, addToList, toggleTeamActive, currentTeamID: team.id}}>
 			<div className="body-wrapper">
 				<TeamListTab />
 				<TeamScreen currentTeam={team} delete={deleteFromList}/>
