@@ -48,7 +48,7 @@ export default function TeamScreen(props){
 	
 	function SaveButton(){
 		return(
-			<input type="submit" className="Save-button" value="Save changes">
+			<input type="submit" className="save-button" value="Save changes">
 			</input>
 		)
 	}
@@ -64,9 +64,12 @@ export default function TeamScreen(props){
 		<div className="team-screen">
 				<TeamName teamName = {team.name}/>
 			<form className="team-screen-form" onSubmit={(e)=>saveTeam(e)}>
+				
 				<center style={{width: "140%"}}>
 				<hr style={{border: "1px solid white", width: "100%"}}/>
 				</center>
+				
+				<SaveButton />
 				
 				<div className="description-section">
 					<label htmlFor="description">Team Description: </label>
@@ -82,7 +85,6 @@ export default function TeamScreen(props){
 					</textarea>
 				</div>
 				
-				<SaveButton />
 				<DeleteButton />
 			</form>
 		</div>
