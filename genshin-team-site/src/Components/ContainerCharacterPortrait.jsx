@@ -1,7 +1,12 @@
+import { useContext } from "react";
+import { UserContext } from "../App";
+
 export default function ContainerCharacterPortrait({character}){
+	const context = useContext(UserContext);
+	
 	return(
-		<div className="container-character-portrait">
-			<img src={"./SideIcon/" + character + ".png"} />
+		<div className="container-character-portrait" onClick={() => context.setModalActive(true)}>
+			<img src={"./SideIcon/" + character + ".png"} alt={character}/>
 			<div className="container-character-bg"></div>
 		</div>
 	)
