@@ -1,5 +1,6 @@
 import TeamListTab from "./Components/TeamListTab";
 import TeamScreen from "./Components/TeamScreen";
+import CharacterModal from "./Components/CharacterModal";
 import './Styles/stylesIndex.css';
 import { useState, createContext } from "react";
 
@@ -98,11 +99,17 @@ export default function App() {
 		setTeam(teamStats);
 	}
 	
+	const [modalActive, setModalActive] = useState(false);
+	
   return (
-		<UserContext.Provider  value={{previewTeam, teams, setTeams, setTeam, addToList, toggleTeamActive, currentTeamID: team.id}}>
+		<UserContext.Provider  value={{previewTeam, teams, setTeams, setTeam, addToList, toggleTeamActive, currentTeamID: team.id, setModalActive}}>
 			<div className="body-wrapper">
 				<TeamListTab />
 				<TeamScreen currentTeam={team} delete={deleteFromList}/>
+				{ modalActive ? 
+					(<CharacterModal />) :
+					(<></>)	
+				}
 			</div>
 		</UserContext.Provider>
   );
