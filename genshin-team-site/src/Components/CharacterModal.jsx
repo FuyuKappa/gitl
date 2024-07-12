@@ -13,7 +13,7 @@ export default function CharacterModal(){
 									 : color = "linear-gradient(180deg, rgb(104,96,142), rgb(150,117,194))";
 			
 			return (
-				<div className="character-select-icon">
+				<div className="character-select-icon" key={crypto.randomUUID()}>
 					<img src={"./Portrait/" + character.name + ".png"} style={{background: color}} alt={character.name}/>
 					<img className="element-icon" src={"./Element/" + character.element + ".png"} alt={character.element}/>
 					{character.name}
