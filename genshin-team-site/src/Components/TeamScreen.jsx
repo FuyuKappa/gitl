@@ -1,14 +1,14 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../App";
 import '../Styles/stylesTeamScreen.css';
 import { default as CharacterDeck } from "./TeamScreenCharacterDeck";
 import { default as TeamName } from "./TeamName";
+import { default as Description } from "./TeamDescription";
+import { default as Rotation } from "./TeamRotation";
 
 export default function TeamScreen(props){
 	let team = props.currentTeam;
 	const context = useContext(UserContext);
-	const [description, setDescription] = useState(team.description);
-	const [rotation, setRotation] = useState(team.rotation);
 	
 	function DeleteButton(){
 		return(
@@ -18,11 +18,6 @@ export default function TeamScreen(props){
 		)
 	}
 	
-	useEffect(()=>{
-		setDescription(team.description);
-		setRotation(team.rotation);
-	}, [team]);
-	
 	function saveTeam(e){
 		e.preventDefault();
 		let notes = [
@@ -31,6 +26,9 @@ export default function TeamScreen(props){
 			e.target.note2.value.trim(),
 			e.target.note3.value.trim()
 		]
+		let description = e.target.description.value.trim();
+		let rotation = e.target.rotation.value.trim();
+		
 		context.setTeams(currentTeams=>{
 			return currentTeams.map((currentTeam) =>{
 				if(currentTeam.id === team.id)
@@ -60,6 +58,7 @@ export default function TeamScreen(props){
 			</div>
 		)
 	}
+
 	return(
 		<div className="team-screen">
 				<TeamName teamName = {team.name}/>
@@ -71,19 +70,11 @@ export default function TeamScreen(props){
 				
 				<SaveButton />
 				
-				<div className="description-section">
-					<label htmlFor="description">Team Description: </label>
-					<textarea className="description-text" name="description" id="description"value={description} onChange={(e) => setDescription(e.target.value)}>
-					</textarea>
-				</div>
+				<Description teamDescription={team.description}/>
 				
 				<CharacterDeck props={{team: team.characters, notes: team.notes}}/>
 				
-				<div className="rotation-section">
-					<label htmlFor="rotation">Rotation: </label>
-					<textarea className="rotation-text" name="rotation" id="rotation" value={rotation} onChange={(e) => setRotation(e.target.value)}>
-					</textarea>
-				</div>
+				<Rotation teamRotation={team.rotation} />
 				
 				<DeleteButton />
 			</form>
