@@ -23,7 +23,7 @@ export default function CharacterModal(){
 	}
 	
 	return (
-		<div className="modal-global">
+		<div className="modal-global" onClick={(e) => {if(e.target.className === "modal-global") context.setModalActive(false)}}>
 			<div className="modal-box">
 				<div className="modal-top">
 					Select a character
