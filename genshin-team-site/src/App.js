@@ -102,7 +102,7 @@ export default function App() {
 	const [modalActive, setModalActive] = useState(false);
 	
   return (
-		<UserContext.Provider  value={{previewTeam, teams, setTeams, setTeam, addToList, toggleTeamActive, currentTeamID: team.id, setModalActive}}>
+		<UserContext.Provider  value={{previewTeam, teams, setTeams, setTeam, addToList, toggleTeamActive, currentTeamID: team.id, setModalActive, team}}>
 			<div className="body-wrapper">
 				<TeamListTab />
 				<TeamScreen currentTeam={team} delete={deleteFromList}/>
