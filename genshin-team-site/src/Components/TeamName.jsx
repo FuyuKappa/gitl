@@ -49,7 +49,7 @@ export default function TeamName(props){
 	if(editing){
 		return(
 			<div className="team-name">
-				<form onSubmit={(e) => confirmEdit(teamID, newName, e)}>
+				<form onSubmit={(e) => confirmEdit(teamID, newName, e)} class="name-edit-form">
 					<input type="text" value={newName} onChange={e => setNewName(e.target.value)} onClick = {event => event.stopPropagation()}>
 					</input>
 					<div className="edit-btn check" onClick={(e) => confirmEdit(teamID, newName, e)}>
