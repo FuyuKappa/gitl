@@ -15,6 +15,7 @@
 	position: relative;
 	display: inline-block;
 	width: 32px;
+	min-width: 32px;
 	height: 32px;
 	margin: 0 4px;
 	top: 4px;
@@ -136,7 +137,6 @@
 	width: 95%;
 	height: 95%;
 	background-color: rgba(0,0,0,0);
-	color: block;
 	font-size: 0.8em;
 	font-family: Helvetica;
 	padding: 4px;
@@ -161,6 +161,7 @@
 	color: white;
 	font-size: 0.6em;
 	cursor: pointer;
+	z-index: 10;
 }
 
 .save-button:hover{
@@ -186,6 +187,10 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.team-screen-form > center{
+	width: 140%;
 }
 
 .description-section, .rotation-section{
@@ -218,6 +223,16 @@
 		width: fit-content;
 		max-width: 40%;
 		min-width: 40%;
+	}
+}
+
+@media only screen and (max-width: 1760px){
+	.team-screen-form > center{
+		width: 100%;
+	}
+	
+	.description-section, .rotation-section{
+		width: 100%;
 	}
 }
 

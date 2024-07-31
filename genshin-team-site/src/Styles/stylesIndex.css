@@ -99,7 +99,19 @@ body{
 
 .team-name{
 	width: 72%;
+	max-width: 72%;
 	padding-left: 12px;
+	word-wrap: break-word;
+}
+
+.name-edit-form{
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.name-edit-form > input{
+	font-size: inherit;
+	width: calc(100% - 64px);
 }
 
 .modal-global{
