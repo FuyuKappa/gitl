@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../App";
 import '../Styles/stylesTeamScreen.css';
 import { default as CharacterDeck } from "./TeamScreenCharacterDeck";
-import { default as TeamName } from "./TeamName";
+//import { default as TeamName } from "./TeamName";
 import { default as Description } from "./TeamDescription";
 import { default as Rotation } from "./TeamRotation";
 
@@ -61,10 +61,12 @@ export default function TeamScreen(props){
 
 	return(
 		<div className="team-screen">
-				<TeamName teamName = {team.name}/>
+				<div className="team-name">
+					{team.name}
+				</div>
 			<form className="team-screen-form" onSubmit={(e)=>saveTeam(e)}>
 				
-				<center style={{width: "140%"}}>
+				<center>
 				<hr style={{border: "1px solid white", width: "100%"}}/>
 				</center>
 				
