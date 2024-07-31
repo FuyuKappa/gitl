@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "../App";
 import '../Styles/stylesTeamScreen.css';
 import { default as CharacterDeck } from "./TeamScreenCharacterDeck";
@@ -39,7 +39,7 @@ export default function TeamScreen(props){
 		
 		//update the team screen
 		context.setTeam(() => {return {...team, notes: notes, description: description, rotation: rotation}});
-		context.saveToLocalStorage();
+
 		//update the active
 		context.toggleTeamActive(team.id);
 	}

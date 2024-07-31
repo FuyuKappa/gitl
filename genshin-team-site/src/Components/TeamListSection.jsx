@@ -1,6 +1,6 @@
 import {default as Container} from "./TeamContainer";
 import {default as NewTeamButton} from "./NewTeamButton";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../App";
 
 export default function TeamListSection(){

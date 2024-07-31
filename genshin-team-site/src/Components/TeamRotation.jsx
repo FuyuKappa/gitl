@@ -1,15 +1,12 @@
-import { useContext, useState, useEffect } from "react";
-import { UserContext } from "../App";
+import { useState, useEffect } from "react";
 
 
 export default function TeamRotation({teamRotation}){
 	const [rotation, setRotation] = useState(teamRotation);
 	
-	const context = useContext(UserContext);
-	
 	useEffect(() => {
 		setRotation(teamRotation);
-	}, [context.team]);
+	}, [teamRotation]);
 	
 	return(
 		<div className="rotation-section">

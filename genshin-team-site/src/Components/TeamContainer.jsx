@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { UserContext } from "../App";
 
 export default function TeamContainer({team}){
-	const {name, id, characters, notes, description, rotation, active} = team;
+	const {name, id, characters, active} = team;
 	const previewTeam = useContext(UserContext).previewTeam;
 	const toggleTeamActive = useContext(UserContext).toggleTeamActive;
 	const className = "team-container team-container-" + active;

@@ -1,15 +1,11 @@
-import { useContext, useState, useEffect } from "react";
-import { UserContext } from "../App";
-
+import { useState, useEffect } from "react";
 
 export default function TeamDescription({teamDescription}){
 	const [description, setDescription] = useState(teamDescription);
 	
-	const context = useContext(UserContext);
-	
 	useEffect(() => {
 		setDescription(teamDescription);
-	}, [context.team]);
+	}, [teamDescription]);
 	
 	return(
 		<div className="description-section">

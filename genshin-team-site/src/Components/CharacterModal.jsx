@@ -17,7 +17,6 @@ export default function CharacterModal({character, position}){
 				return team;
 			});
 		});
-		context.saveToLocalStorage();
 	}
 	
 	

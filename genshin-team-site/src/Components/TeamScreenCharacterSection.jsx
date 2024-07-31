@@ -27,7 +27,7 @@ export default function TeamScreenCharacterSection({character, note, index}){
 					Notes:
 				</div>
 				<div className="section-character-notes">
-					<textarea name="newNote" className="notes-form" value={currentNote} onChange={(e) => updateNote(e)} name={noteID} placeholder="Add character notes here.">
+					<textarea name="newNote" className="notes-form" value={currentNote} onChange={(e) => updateNote(e)} id={noteID} placeholder="Add character notes here.">
 					</textarea>
 				</div>
 			</div>

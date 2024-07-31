@@ -7,7 +7,8 @@ import { useState, createContext, useEffect } from "react";
 export const UserContext = createContext();
 
 export default function App() {
-	let test = {
+	/*
+	let test = [ {
 		name: "Team 1",
 		id: crypto.randomUUID(),
 		characters: [
@@ -25,8 +26,7 @@ export default function App() {
 		description: "This is the best team.",
 		rotation: "Yelan E Q > Barbara E > Hu Tao E Then NC any amount of times hell yeah",
 		active: false
-	}
-	let test1 = {
+		},{
 		name: "Team 2",
 		id: crypto.randomUUID(),
 		characters: [
@@ -44,8 +44,7 @@ export default function App() {
 		description: "This is a test team. But technically this is a melt comp with ganyu as the off-field cryo applier.",
 		rotation: "This team rotates",
 		active: false
-	}
-	let test2 = {
+		},{
 		name: "New Team",
 		id: crypto.randomUUID(),
 		characters: [
@@ -63,36 +62,28 @@ export default function App() {
 		description: "This is a test team with a blank character",
 		rotation: "This team CANNOT rotate.",
 		active: false		
-	}
+	} ] */
 
 	const [teams, setTeams] = useState(() =>{
 		console.log("Attempting to read local storage");
 		
 		let storedTeams  = JSON.parse(localStorage.getItem("genshinTeams"));
-		console.log(storedTeams);
+
 		if(storedTeams === undefined || storedTeams === null || storedTeams === "undefined") {
 			console.log("No genshin teams found");
 			storedTeams = [];
 		}
-		console.log(storedTeams);
 		return storedTeams;
 	});
 	
 	useEffect(() => {
-		
-		
 		localStorage.setItem("genshinTeams", JSON.stringify(teams));
 	}, [teams]);	
-	
-	function saveToLocalStorage(){
-		//localStorage.setItem("genshinTeams", teams)
-	}
 	
 	function addToList(){
 		console.log(teams);
 		const newTeam = { name: "New Team", id: crypto.randomUUID(), characters: [], notes: ["","","",""], description: "", rotation: "", active: true };
 		setTeams(() => { return [...teams, newTeam]});
-		saveToLocalStorage();
 		previewTeam(newTeam);
 		toggleTeamActive(newTeam.id);
 	}
@@ -101,7 +92,6 @@ export default function App() {
 		setTeams(currentTeams => {
 			return currentTeams.filter(team => team.id !== id);
 		});
-		saveToLocalStorage();
 		previewTeam({});
 	}
 	
@@ -136,7 +126,7 @@ export default function App() {
 	const value={
 		previewTeam, teams, setTeams, setTeam,
 		addToList, toggleTeamActive, currentTeamID: team.id,
-		setModalActive, team, openModal, saveToLocalStorage
+		setModalActive, team, openModal
 	}
 	
   return (
