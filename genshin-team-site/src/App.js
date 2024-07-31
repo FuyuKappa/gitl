@@ -2,7 +2,7 @@ import TeamListTab from "./Components/TeamListTab";
 import TeamScreen from "./Components/TeamScreen";
 import CharacterModal from "./Components/CharacterModal";
 import './Styles/stylesIndex.css';
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 export const UserContext = createContext();
 
@@ -64,12 +64,35 @@ export default function App() {
 		rotation: "This team CANNOT rotate.",
 		active: false		
 	}
+
+	const [teams, setTeams] = useState(() =>{
+		console.log("Attempting to read local storage");
+		
+		let storedTeams  = JSON.parse(localStorage.getItem("genshinTeams"));
+		console.log(storedTeams);
+		if(storedTeams === undefined || storedTeams === null || storedTeams === "undefined") {
+			console.log("No genshin teams found");
+			storedTeams = [];
+		}
+		console.log(storedTeams);
+		return storedTeams;
+	});
 	
-	const [teams, setTeams] = useState([test, test1, test2]);
+	useEffect(() => {
+		
+		
+		localStorage.setItem("genshinTeams", JSON.stringify(teams));
+	}, [teams]);	
+	
+	function saveToLocalStorage(){
+		//localStorage.setItem("genshinTeams", teams)
+	}
 	
 	function addToList(){
+		console.log(teams);
 		const newTeam = { name: "New Team", id: crypto.randomUUID(), characters: [], notes: ["","","",""], description: "", rotation: "", active: true };
 		setTeams(() => { return [...teams, newTeam]});
+		saveToLocalStorage();
 		previewTeam(newTeam);
 		toggleTeamActive(newTeam.id);
 	}
@@ -78,6 +101,7 @@ export default function App() {
 		setTeams(currentTeams => {
 			return currentTeams.filter(team => team.id !== id);
 		});
+		saveToLocalStorage();
 		previewTeam({});
 	}
 	
@@ -100,14 +124,28 @@ export default function App() {
 	}
 	
 	const [modalActive, setModalActive] = useState(false);
+	const [currentEditingCharacter, setEditingCharacter] = useState("");
+	const [currentEditingPosition, setEditingPosition] = useState(0);
+	
+	function openModal(currentCharacter, position){
+		setEditingCharacter(currentCharacter);
+		setEditingPosition(position);
+		setModalActive(true);
+	}
+	
+	const value={
+		previewTeam, teams, setTeams, setTeam,
+		addToList, toggleTeamActive, currentTeamID: team.id,
+		setModalActive, team, openModal, saveToLocalStorage
+	}
 	
   return (
-		<UserContext.Provider  value={{previewTeam, teams, setTeams, setTeam, addToList, toggleTeamActive, currentTeamID: team.id, setModalActive, team}}>
+		<UserContext.Provider  value={value}>
 			<div className="body-wrapper">
 				<TeamListTab />
 				<TeamScreen currentTeam={team} delete={deleteFromList}/>
 				{ modalActive ? 
-					(<CharacterModal />) :
+					(<CharacterModal character={currentEditingCharacter} position={currentEditingPosition}/>) :
 					(<></>)	
 				}
 			</div>

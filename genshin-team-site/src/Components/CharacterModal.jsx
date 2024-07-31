@@ -2,8 +2,24 @@ import {GenshinCharacterData as data} from "../Data/GenshinCharacters"
 import { useContext } from "react";
 import { UserContext } from "../App";
  
-export default function CharacterModal(){
+export default function CharacterModal({character, position}){
 	const context = useContext(UserContext);
+	
+	function editCharacter(newCharacter){
+		context.setTeams(currentTeams => {
+			return currentTeams.map(team => {
+				if(context.team.id === team.id){
+					let characters = team.characters;
+					characters[position] = newCharacter;
+					return {...team, characters: characters};
+				}
+				
+				return team;
+			});
+		});
+		context.saveToLocalStorage();
+	}
+	
 	
 	function populateWithData(){
 		return data.map((character) => {
@@ -13,7 +29,7 @@ export default function CharacterModal(){
 									 : color = "linear-gradient(180deg, rgb(104,96,142), rgb(150,117,194))";
 			
 			return (
-				<div className="character-select-icon" key={crypto.randomUUID()}>
+				<div className="character-select-icon" key={crypto.randomUUID()} onClick={() => {editCharacter(character.name); context.setModalActive(false)}}>
 					<img src={"./Portrait/" + character.name + ".png"} style={{background: color}} alt={character.name}/>
 					<img className="element-icon" src={"./Element/" + character.element + ".png"} alt={character.element}/>
 					{character.name}
@@ -34,6 +50,7 @@ export default function CharacterModal(){
 					</svg>
 				</div>
 				<div className="modal-box-preview">
+					{character}
 				</div>
 				<div className="modal-box-character-grid">
 					{populateWithData()}

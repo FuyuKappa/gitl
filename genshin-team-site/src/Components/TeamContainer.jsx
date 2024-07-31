@@ -11,8 +11,9 @@ export default function TeamContainer({team}){
 	
 	let characterList = [];	
 	for(let i = 0; i < 4; i++){
+		//console.log(characters);
 		let character = characters[i] ? characters[i] : "AddCharacter";
-		characterList.push(<CharacterPortrait  character={character} key={crypto.randomUUID()} />)
+		characterList.push(<CharacterPortrait  character={character} key={crypto.randomUUID()} id={id} position={i}/>)
 	}
 	
 	return(
