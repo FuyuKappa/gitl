@@ -1,8 +1,16 @@
-import { useState} from "react";
+import { useState, useContext} from "react";
+import { UserContext } from "../App";
 
 export default function TeamScreenCharacterSection({character, note, index}){
 	const [currentNote, setNote] = useState(note);
 	let noteID = "note" + index; 
+	
+	const context = useContext(UserContext);
+	
+	function openModal(e){
+		e.stopPropagation();
+		context.openModal(character, index); 
+	}
 	
 	function updateNote(e){
 		setNote(() => {return e.target.value});
@@ -10,17 +18,17 @@ export default function TeamScreenCharacterSection({character, note, index}){
 	
 	return(
 		<div className="team-character-section">
-			<div className="section-character-name">
+			<div className="section-character-name" onClick={e => openModal(e)}>
 				<center>
 					{character}
 				</center>
 			</div>
 			
-			<div className="section-character-portrait">
+			<div className="section-character-portrait" onClick={e => openModal(e)}>
 				 <img className="banner" src={"./Banner/" + character + ".png"} alt={character}></img>
 			</div>
 			
-			<div className="bg-gradient-up"></div>
+			<div className="bg-gradient-up" onClick={e => openModal(e)}></div>
 			
 			<div className="notes-section">
 				<div className="character-notes-label">
