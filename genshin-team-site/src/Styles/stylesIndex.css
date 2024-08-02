@@ -60,9 +60,9 @@ body{
 	object-position: 0 100%;
 }
 
-.container-character-portrait>img:hover{
+/*.container-character-portrait>img:hover{
 	transform: scale(1.24);
-}
+}*/
 
 .container-character-portrait>img[src="./Portraits/AddCharacter.png"]{
 	z-index: 3;

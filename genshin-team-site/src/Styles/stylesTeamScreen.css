@@ -21,6 +21,14 @@
 	top: 4px;
 }
 
+.team-container-false>.team-name>.edit-btn{
+	border: 1px solid white;
+}
+
+.team-container-true>.team-name>.edit-btn{
+	border: 1px solid black;
+}
+
 .edit-btn:hover{
 	transform: scale(1.2);
 	background-color: rgba(0,0,2, 0.2);
@@ -86,6 +94,12 @@
 	margin-bottom: 16px;
 }
 
+.team-character-section:hover{
+	transform: scale(1.02);
+	cursor: pointer;
+	/*border: 1px solid white;*/
+}
+
 .section-character-name{
 	border-radius: 8px 8px 0 0;
 	background-image: linear-gradient(180deg, rgba(0,0,0,1), rgba(0,0,0,0));
@@ -109,6 +123,11 @@
 	/*aspect-ratio: 9/20;*/
 	height: 444px;
 	background-color: #333f50;
+}
+
+.section-character-portrait>.banner[src="./Banner/Blank.png"]{
+	object-fit: contain;
+	object-position: 0 36%;
 }
 
 .character-notes-label{
