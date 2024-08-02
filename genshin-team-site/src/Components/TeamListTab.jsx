@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { UserContext } from "../App";
 
 export default function TeamListTab(){
-	{/*
+	/*
 	function resetHeight(){
 		let height = window.innerHeight + "px";
 		document.body.style.height = height;
@@ -14,7 +14,7 @@ export default function TeamListTab(){
 	}
 
 	window.addEventListener("resize", resetHeight);
-	resetHeight();*/}
+	resetHeight();*/
 	const teamCount = useContext(UserContext).teams.length;
 	return(
 		//This tab will be the one moving left and right
