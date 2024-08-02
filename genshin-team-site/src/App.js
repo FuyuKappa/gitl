@@ -65,14 +65,15 @@ export default function App() {
 	} ] */
 
 	const [teams, setTeams] = useState(() =>{
-		console.log("Attempting to read local storage");
+		//console.log("Attempting to read local storage");
 		
 		let storedTeams  = JSON.parse(localStorage.getItem("genshinTeams"));
 
 		if(storedTeams === undefined || storedTeams === null || storedTeams === "undefined") {
 			console.log("No genshin teams found");
-			storedTeams = [];
+			return [];
 		}
+		//console.log("Stored team found");
 		return storedTeams;
 	});
 	
