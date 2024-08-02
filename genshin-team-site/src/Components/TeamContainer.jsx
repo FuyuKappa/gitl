@@ -18,7 +18,7 @@ export default function TeamContainer({team}){
 	
 	return(
 		<div className={className} onClick={() => {previewTeam(team); toggleTeamActive(id)}}>
-			<Name teamName={name} id={id}/>
+			<Name teamName={name} id={id} selected={active}/>
 			<hr style={{margin: '4px 8px'}} />
 				{/*Resnance deck (component = resonance deck)
 				//resonance icons
