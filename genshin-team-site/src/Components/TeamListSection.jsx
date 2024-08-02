@@ -6,8 +6,7 @@ import { UserContext } from "../App";
 export default function TeamListSection(){
 	const teams = useContext(UserContext).teams;
 	const addToList = useContext(UserContext).addToList;
-	
-	console.log(teams);
+
 	return(
 		<div className="team-list-section">
 			{teams ? 
