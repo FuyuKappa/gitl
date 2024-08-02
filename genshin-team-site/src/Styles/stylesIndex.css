@@ -21,6 +21,11 @@ body{
 	overflow-y: auto;
 }
 
+.team-list-header{
+	display: flex;
+	justify-content: space-between;
+}
+
 .team-container{
 	background-color: #444444;
 	color: white;

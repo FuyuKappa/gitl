@@ -1,5 +1,7 @@
 import {default as Section} from "./TeamListSection";
-import {useEffect} from "react";
+//import { useEffect } from "react";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 export default function TeamListTab(){
 	{/*
@@ -13,11 +15,15 @@ export default function TeamListTab(){
 
 	window.addEventListener("resize", resetHeight);
 	resetHeight();*/}
-	
+	const teamCount = useContext(UserContext).teams.length;
 	return(
 		//This tab will be the one moving left and right
 		<div className="team-list-tab">
-			Teams
+			<div className="team-list-header">
+				<span className="team-list-header-label">Teams</span>
+				<span className="team-list-header-counter">
+				{ teamCount ? teamCount: "No teams found" }</span>
+			</div>
 			<hr />
 			<Section />
 		</div>
