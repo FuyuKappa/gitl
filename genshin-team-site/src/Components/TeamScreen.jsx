@@ -74,6 +74,8 @@ export default function TeamScreen(props){
 				
 				<Description teamDescription={team.description}/>
 				
+				<span className="" style={{paddingBottom: "8px"}}>Click on the sections below to change the characters.</span>
+				
 				<CharacterDeck props={{team: team.characters, notes: team.notes}}/>
 				
 				<Rotation teamRotation={team.rotation} />
