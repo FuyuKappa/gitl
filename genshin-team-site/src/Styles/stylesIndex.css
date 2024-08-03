@@ -186,6 +186,7 @@ body{
 .modal-box-preview{
 	display: flex;
 	justify-content: center;
+	margin-top: 4px;
 }
 
 .modal-box-character-grid{
@@ -195,11 +196,43 @@ body{
 	flex-wrap: wrap;
 	column-gap: 28px;
 	row-gap: 16px;
-	height: 86%;
+	height: 44%;
 	overflow: auto;
 	justify-content: center;
 	padding: 8px 0;
 	margin: 0 16px;
+}
+
+.modal-search-container{
+	display: flex;
+	justify-content: center;
+}
+
+.modal-search-form{
+	width: 82%;
+	margin-bottom: 8px;
+	margin-top: 4px;
+}
+.modal-search-form>input{
+	color: white;
+	width: 100%;
+	font-size: 28px;
+	background-color: rgba(0,0,0,0);
+	border-radius: 8px;
+	border: 1px solid white;
+}
+
+.modal-box-button-container{
+	margin-top: 16px;
+	display: flex;
+	justify-content: center;
+	column-gap: 4%;
+}
+.modal-box-button-container>button{
+	font-size: 28px;
+	width: 28%;
+	border-radius: 20px;
+	backround-color: white;
 }
 
 @media only screen and (max-width: 1760px){

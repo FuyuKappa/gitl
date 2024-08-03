@@ -1,22 +1,26 @@
 import {GenshinCharacterData as data} from "../Data/GenshinCharacters"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../App";
  
 export default function CharacterModal({character, position}){
 	const context = useContext(UserContext);
+	const [previewCharacter, setPreviewCharacter] = useState("Blank");
 	
 	function editCharacter(newCharacter){
-		context.setTeams(currentTeams => {
-			return currentTeams.map(team => {
-				if(context.team.id === team.id){
-					let characters = team.characters;
-					characters[position] = newCharacter;
-					return {...team, characters: characters};
-				}
-				
-				return team;
+		if(newCharacter !== "Blank"){
+			context.setTeams(currentTeams => {
+				return currentTeams.map(team => {
+					if(context.team.id === team.id){
+						let characters = team.characters;
+						characters[position] = newCharacter;
+						return {...team, characters: characters};
+					}
+					
+					return team;
+				});
 			});
-		});
+			 context.setModalActive(false)
+		}
 	}
 	
 	
@@ -27,8 +31,10 @@ export default function CharacterModal({character, position}){
 			character.rarity === "5" ? color = "linear-gradient(180deg, rgb(153,108,66), rgb(223,145,79))" 
 									 : color = "linear-gradient(180deg, rgb(104,96,142), rgb(150,117,194))";
 			
-			return <CharacterPortrait clickEvent={() => {editCharacter(character.name); context.setModalActive(false)}}
-									  bgColor={color} name={character.name} element={character.element} className="character-select-icon"/>;
+			//return <CharacterPortrait clickEvent={() => {editCharacter(character.name); context.setModalActive(false)}}
+									  //bgColor={color} name={character.name} element={character.element} className="character-select-icon"/>;
+		  return <CharacterPortrait clickEvent={() => {setPreviewCharacter(character.name)}}
+				  bgColor={color} name={character.name} element={character.element} className="character-select-icon"/>;
 		});
 	}
 	
@@ -53,6 +59,16 @@ export default function CharacterModal({character, position}){
 		);
 	}
 	
+	
+	function CharacterSearchBar(){
+		return(
+			<div className="modal-search-container">
+				<form className="modal-search-form">
+					<input type="text" placeholder="Type character name to search" />
+				</form>
+			</div>
+		);
+	}
 	return (
 		<div className="modal-global" onClick={(e) => {if(e.target.className === "modal-global") context.setModalActive(false)}}>
 			<div className="modal-box">
@@ -67,10 +83,17 @@ export default function CharacterModal({character, position}){
 				<div className="modal-box-preview">
 					<CharacterPortrait name={character} className="character-select-icon character-select-preview" />
 					->
-					<CharacterPortrait name={character} className="character-select-icon character-select-preview" />
+					<CharacterPortrait name={previewCharacter} className="character-select-icon character-select-preview" />
 				</div>
+				
+				<CharacterSearchBar />
+				
 				<div className="modal-box-character-grid">
 					{populateWithData()}
+				</div>
+				<div className="modal-box-button-container">
+					<button>Cancel</button>
+					<button onClick={() => {editCharacter(previewCharacter)}}>Confirm</button>
 				</div>
 			</div>
 		</div>
