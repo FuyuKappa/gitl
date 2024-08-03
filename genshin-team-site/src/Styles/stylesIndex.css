@@ -129,11 +129,16 @@ body{
 
 .modal-box{
 	color: white;
-	margin: 40px 400px;
+	margin: 40px 20%;
 	border: 2px solid white;
-	background-color: black;
-	height: 92%;
+	//filter: drop-shadow(8px 8px black);
+	background-color: rgb(61,69,85);
+	height: 88%;
 	border-radius: 8px;
+}
+
+.modal-top{
+	text-align: center;
 }
 
 .character-select-icon{
@@ -143,7 +148,7 @@ body{
 	overflow-x: hidden;
 }
 
-.character-select-icon:hover{
+.character-select-icon:not(.character-select-preview):hover{
 	transform: scale(1.02);
 	border: 2px solid white;
 }
@@ -179,7 +184,8 @@ body{
 }
 
 .modal-box-preview{
-	
+	display: flex;
+	justify-content: center;
 }
 
 .modal-box-character-grid{
@@ -194,4 +200,10 @@ body{
 	justify-content: center;
 	padding: 8px 0;
 	margin: 0 16px;
+}
+
+@media only screen and (max-width: 1760px){
+	.modal-box{
+		margin: 40px 16%;
+	}
 }

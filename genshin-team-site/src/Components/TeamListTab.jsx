@@ -20,9 +20,7 @@ export default function TeamListTab(){
 		//This tab will be the one moving left and right
 		<div className="team-list-tab">
 			<div className="team-list-header">
-				<span className="team-list-header-label">Teams</span>
-				<span className="team-list-header-counter">
-				{ teamCount ? teamCount: "No teams found" }</span>
+				<span className="team-list-header-label">Teams | { teamCount ? teamCount: "No teams found" }</span>
 			</div>
 			<hr />
 			<Section />
