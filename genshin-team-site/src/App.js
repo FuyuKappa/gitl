@@ -127,7 +127,7 @@ export default function App() {
 	const value={
 		previewTeam, teams, setTeams, setTeam,
 		addToList, toggleTeamActive, currentTeamID: team.id,
-		setModalActive, team, openModal
+		setModalActive, modalActive ,team, openModal
 	}
 	
   return (
