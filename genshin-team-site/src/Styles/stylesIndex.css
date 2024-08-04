@@ -31,6 +31,7 @@ body{
 	color: white;
 	margin-right: 8px;	
 	margin-top: 12px;
+	border: 2px solid transparent;
 }
 
 .team-container:hover{
@@ -98,6 +99,8 @@ body{
 	background-color: transparent;
 }
 
+
+
 .new-button{
 	margin-bottom: 52px;
 }
@@ -135,6 +138,8 @@ body{
 	background-color: rgb(61,69,85);
 	height: 88%;
 	border-radius: 8px;
+	display: flex;
+	flex-flow: column nowrap;
 }
 
 .modal-top{
@@ -143,9 +148,14 @@ body{
 
 .character-select-icon{
 	width: 140px;
-	border: 1px solid red;
+	border: 2px solid black;
 	border-radius: 8px;
 	overflow-x: hidden;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	position: relative;
+
 }
 
 .character-select-icon:not(.character-select-preview):hover{
@@ -159,19 +169,32 @@ body{
 	width: 100%;
 	aspect-ratio: 1/1;
 	object-fit: scale-down;
-	object-position: px 0;
 }
 
 .character-select-icon>.element-icon{
 	z-index: 5;
-	position: relative;
-	float: right;
+	position: absolute;
 	width: 32px;
 	height: 32px;
 	bottom: 144px;
-	right: 4px;
+	left: 104px;
 	object-fit: fill;
-	object-position: 0 0;
+}
+
+.element-icon-image{
+	width: inherit;
+	position: absolute;
+}
+
+.portrait-name{
+	position: relative;
+	width: 100%;
+	text-align: center;
+	color: black;
+	height: 40px;
+	line-height: 40px;
+	background-color:rgb(235,228,216);
+	white-space: nowrap;
 }
 
 #modal-close{
@@ -190,19 +213,37 @@ body{
 }
 
 .modal-box-character-grid{
-	border: 1px solid white;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-flow: row wrap;
 	column-gap: 28px;
 	row-gap: 16px;
-	height: 44%;
+	height: 46%;
 	overflow: auto;
 	justify-content: center;
+	align-items: flex-start;
+	align-content: flex-start;
 	padding: 8px 0;
 	margin: 0 16px;
+	flex-grow: 2;
+	position: relative;
 }
 
+.modal-box-character-grid-falloff{
+	height: 12px;
+	position: relative;
+	
+	z-index: 10;
+}
+
+.bottom{
+	background-image: linear-gradient(0deg, rgb(61,69,85), rgba(255,255,255,0));
+	top: -12px;
+}
+
+.top{
+	background-image: linear-gradient(180deg, rgb(61,69,85), rgba(255,255,255,0));
+	top: 12px;
+}
 .modal-search-container{
 	display: flex;
 	justify-content: center;
@@ -212,10 +253,7 @@ body{
 	width: 82%;
 	margin-bottom: 8px;
 	margin-top: 4px;
-}
-.modal-search-form>input{
 	color: white;
-	width: 100%;
 	font-size: 28px;
 	background-color: rgba(0,0,0,0);
 	border-radius: 8px;
@@ -223,16 +261,25 @@ body{
 }
 
 .modal-box-button-container{
-	margin-top: 16px;
+	margin: 16px 0;
 	display: flex;
 	justify-content: center;
 	column-gap: 4%;
+	position: relative;
+	top: -12px;
 }
 .modal-box-button-container>button{
 	font-size: 28px;
 	width: 28%;
 	border-radius: 20px;
-	backround-color: white;
+	background-color: rgb(227,218,199);
+	border: 2px solid transparent;
+}
+
+.modal-box-button-container>button:hover{
+	transform: scale(1.02);
+	background-color: rgb(227,218,199);
+	border: 2px solid white;
 }
 
 @media only screen and (max-width: 1760px){
