@@ -48,7 +48,7 @@ export const GenshinCharacterData = [
 		"name": "Chongyun", "element": "Cryo", "rarity": "4"
 	},
 	{
-		"name": "Clorinde", "element": "Clorinde", "rarity": "5"
+		"name": "Clorinde", "element": "Electro", "rarity": "5"
 	},
 	{
 		"name": "Collei", "element": "Dendro", "rarity": "4"
@@ -70,6 +70,9 @@ export const GenshinCharacterData = [
 	},
 	{
 		"name": "Eula", "element": "Cryo", "rarity": "5"
+	},
+	{
+		"name": "Emilie", "element": "Dendro", "rarity": "5"
 	},
 	{
 		"name": "Faruzan", "element": "Anemo", "rarity": "4"
@@ -201,7 +204,7 @@ export const GenshinCharacterData = [
 		"name": "Venti", "element": "Anemo", "rarity": "5"
 	},
 	{
-		"name": "Wanderer", "element": "Anemo", "rarity": "5"
+		"name": "Wanderer", "alt": "Scaramouche Hat Guy", "element": "Anemo", "rarity": "5"
 	},
 	{
 		"name": "Wriothesley", "element": "Cryo", "rarity": "5"
