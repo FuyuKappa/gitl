@@ -1,6 +1,7 @@
 import {GenshinCharacterData as data} from "../Data/GenshinCharacters"
 import { useContext, useState } from "react";
 import { UserContext } from "../App";
+import { default as CharacterSearch } from "./ModalSearch";
  
 export default function CharacterModal({character, position}){
 	const context = useContext(UserContext);
@@ -23,7 +24,7 @@ export default function CharacterModal({character, position}){
 		}
 	}
 	
-	
+	/*
 	function populateWithData(){
 		return data.map((character) => {
 			let color;
@@ -36,7 +37,7 @@ export default function CharacterModal({character, position}){
 		  return <CharacterPortrait clickEvent={() => {setPreviewCharacter(character.name)}}
 				  bgColor={color} name={character.name} element={character.element} className="character-select-icon"/>;
 		});
-	}
+	}*/
 	
 	function CharacterPortrait({clickEvent, bgColor, name, element, className}){
 		if(bgColor === null || bgColor === undefined){
@@ -59,16 +60,7 @@ export default function CharacterModal({character, position}){
 		);
 	}
 	
-	
-	function CharacterSearchBar(){
-		return(
-			<div className="modal-search-container">
-				<form className="modal-search-form">
-					<input type="text" placeholder="Type character name to search" />
-				</form>
-			</div>
-		);
-	}
+
 	return (
 		<div className="modal-global" onClick={(e) => {if(e.target.className === "modal-global") context.setModalActive(false)}}>
 			<div className="modal-box">
@@ -86,11 +78,8 @@ export default function CharacterModal({character, position}){
 					<CharacterPortrait name={previewCharacter} className="character-select-icon character-select-preview" />
 				</div>
 				
-				<CharacterSearchBar />
+				<CharacterSearch CharacterPortrait={CharacterPortrait} setPreviewCharacter={setPreviewCharacter}/>
 				
-				<div className="modal-box-character-grid">
-					{populateWithData()}
-				</div>
 				<div className="modal-box-button-container">
 					<button>Cancel</button>
 					<button onClick={() => {editCharacter(previewCharacter)}}>Confirm</button>
