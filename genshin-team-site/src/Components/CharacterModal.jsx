@@ -24,21 +24,6 @@ export default function CharacterModal({character, position}){
 		}
 	}
 	
-	/*
-	function populateWithData(){
-		return data.map((character) => {
-			let color;
-			
-			character.rarity === "5" ? color = "linear-gradient(180deg, rgb(153,108,66), rgb(223,145,79))" 
-									 : color = "linear-gradient(180deg, rgb(104,96,142), rgb(150,117,194))";
-			
-			//return <CharacterPortrait clickEvent={() => {editCharacter(character.name); context.setModalActive(false)}}
-									  //bgColor={color} name={character.name} element={character.element} className="character-select-icon"/>;
-		  return <CharacterPortrait clickEvent={() => {setPreviewCharacter(character.name)}}
-				  bgColor={color} name={character.name} element={character.element} className="character-select-icon"/>;
-		});
-	}*/
-	
 	function CharacterPortrait({clickEvent, bgColor, name, element, className}){
 		if(bgColor === null || bgColor === undefined){
 			for(let i = 0; i < data.length; i++){
@@ -54,8 +39,14 @@ export default function CharacterModal({character, position}){
 		return(
 			<div className={className} key={crypto.randomUUID()} onClick={clickEvent}>
 				<img src={"./Portrait/" + name + ".png"} style={{background: bgColor}} alt={name}/>
-				<img className="element-icon" src={"./Element/" + element + ".png"} alt={element}/>
-				{name}
+				
+				<div className="element-icon">
+					<img className="element-icon-image" src={"./Element/" + element + ".png"} alt={element}/>
+				</div>
+				
+				<div className="portrait-name">
+					{name}
+				</div>
 			</div>
 		);
 	}
@@ -81,7 +72,7 @@ export default function CharacterModal({character, position}){
 				<CharacterSearch CharacterPortrait={CharacterPortrait} setPreviewCharacter={setPreviewCharacter}/>
 				
 				<div className="modal-box-button-container">
-					<button>Cancel</button>
+					<button onClick={() => context.setModalActive(false)}>Cancel</button>
 					<button onClick={() => {editCharacter(previewCharacter)}}>Confirm</button>
 				</div>
 			</div>
