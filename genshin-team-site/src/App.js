@@ -1,8 +1,10 @@
 import TeamListTab from "./Components/TeamListTab";
 import TeamScreen from "./Components/TeamScreen";
 import CharacterModal from "./Components/CharacterModal";
+import Header from "./Components/SiteHeader";
 import './Styles/stylesIndex.css';
 import { useState, createContext, useEffect } from "react";
+import { useMediaQuery } from 'react-responsive';
 
 export const UserContext = createContext();
 
@@ -123,22 +125,34 @@ export default function App() {
 		setEditingPosition(position);
 		setModalActive(true);
 	}
+		
+	const [showTeams, setShowTeams] = useState(false);
+	const isSmallerThan_1419 = useMediaQuery({ maxWidth: 1419 });
+	
+	function toggleTeamList(){
+		if((isSmallerThan_1419 && showTeams) || !isSmallerThan_1419) //render if showTeams is true and smaller than 1419. Render if bigger than 1419
+			return <TeamListTab />;
+		else
+			return <></>;
+	}
 	
 	const value={
 		previewTeam, teams, setTeams, setTeam,
 		addToList, toggleTeamActive, currentTeamID: team.id,
-		setModalActive, modalActive ,team, openModal
+		setModalActive, modalActive ,team, openModal, setShowTeams, showTeams
 	}
-	
   return (
 		<UserContext.Provider  value={value}>
 			<div className="body-wrapper">
-				<TeamListTab />
-				<TeamScreen currentTeam={team} delete={deleteFromList}/>
-				{ modalActive ? 
-					(<CharacterModal character={currentEditingCharacter} position={currentEditingPosition}/>) :
-					(<></>)	
-				}
+				<Header setShowTeams={setShowTeams} showTeams={showTeams}/>
+				<div className="content-wrapper">
+					{toggleTeamList()}
+					<TeamScreen currentTeam={team} delete={deleteFromList}/>
+					{ modalActive ? 
+						(<CharacterModal character={currentEditingCharacter} position={currentEditingPosition}/>) :
+						(<></>)	
+					}
+				</div>
 			</div>
 		</UserContext.Provider>
   );
