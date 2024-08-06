@@ -9,15 +9,22 @@ body{
 
 .body-wrapper{
 	display:flex;
+	flex-flow: column nowrap;
 	font-size: 28px;
 }
 
+.content-wrapper{
+	display: flex;
+	flex-flow: row nowrap;
+	flex-grow: 2;
+	//height: calc(100vh - 60px);
+}
 .team-list-tab{
 	color: white;
 	background-color: #222222;
 	width: 525px;
 	padding: 16px;
-	height: 100vh;
+	height: calc(100vh - 60px);
 	overflow-y: auto;
 }
 
@@ -98,8 +105,6 @@ body{
 	top: -136px;
 	background-color: transparent;
 }
-
-
 
 .new-button{
 	margin-bottom: 52px;
@@ -229,7 +234,7 @@ body{
 }
 
 .modal-box-character-grid-falloff{
-	height: 12px;
+	height: 16px;
 	position: relative;
 	
 	z-index: 10;
@@ -282,8 +287,54 @@ body{
 	border: 2px solid white;
 }
 
+.site-header{
+	color: white;
+	height: 60px;
+	background-color: #111111;
+	//border-bottom: 2px solid black;
+	display: flex;
+	align-items: center;
+}
+
+.teams-toggle{
+	cursor: pointer;
+}
+.teams-toggle-true{
+	background: white;
+	color: black;
+}
+
 @media only screen and (max-width: 1760px){
 	.modal-box{
 		margin: 40px 16%;
+	}
+}
+
+@media only screen and (max-width: 1419px){
+	.team-list-tab{
+		position: absolute;
+	}
+	
+	.team-list-mobile{
+		z-index: 100;
+		display: block;
+	}
+	
+	.team-list-tab-blur{
+		position: absolute;
+		background-color: rgba(0,0,0,0.4);
+		width: 100vw;
+		height: 100vh;
+		z-index: 99;
+	}
+}
+
+@media only screen and (max-height: 900px){
+	.bottom{
+		top: -8px;
+	}
+	
+	.top{
+		top: 8px;
 	}
 }

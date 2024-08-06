@@ -5,7 +5,7 @@
 	background-color: #333f50;
 	color: white;
 	overflow: auto;
-	height: 100vh;
+	height: calc(100vh - 60px);
 	align-items: center;
 }
 
@@ -92,6 +92,7 @@
 	background-color: rgba(0,0,5,1);
 	border-radius: 8px;
 	margin-bottom: 16px;
+	z-index: 1;	
 }
 
 .team-character-section:hover{
@@ -240,8 +241,12 @@
 @media only screen and (max-width: 1419px){
 	.team-character-section{
 		width: fit-content;
-		max-width: 40%;
-		min-width: 40%;
+		//max-width: 40%;
+		//min-width: 40%;
+	}
+	
+	.team-screen-form{
+		width: 88%;
 	}
 }
 
