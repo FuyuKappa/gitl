@@ -6,6 +6,7 @@ import { useMediaQuery } from "react-responsive";
 
 export default function TeamListTab(){
 	const isSmallerThan_1419 = useMediaQuery({ maxWidth: 1419 });
+	const isSmallerThan_680 = useMediaQuery({ maxWidth: 680 });
 	const className = "team-list-tab " + (isSmallerThan_1419 ? "team-list-mobile" : "");
 	
 	
@@ -21,7 +22,7 @@ export default function TeamListTab(){
 	
 	return(
 		<>	
-			{ isSmallerThan_1419 ?
+			{ isSmallerThan_1419 && !isSmallerThan_680 ?
 				<div className="team-list-tab-blur" onClick={(e) => blurClick(e)}>
 				</div> :
 				<></>
