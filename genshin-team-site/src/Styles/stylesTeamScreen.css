@@ -237,7 +237,19 @@
 
 .description-text:active, .rotation-text:active{
 }
+
+/* when the screen starts getting squished */
+@media only screen and (max-width: 1760px){
+	.team-screen-form > center{
+		width: 100%;
+	}
 	
+	.description-section, .rotation-section{
+		width: 100%;
+	}
+}
+
+/* When the team list is hidden */
 @media only screen and (max-width: 1419px){
 	.team-character-section{
 		width: fit-content;
@@ -250,12 +262,48 @@
 	}
 }
 
-@media only screen and (max-width: 1760px){
-	.team-screen-form > center{
+/* When the vertical banner stops fitting */
+@media only screen and (max-width: 983px){
+	.character-deck{
+		flex-flow: column nowrap;
+		width: 80%;
+		align-items: center;
+	}
+	.team-character-section{
 		width: 100%;
+		max-width: 300px;
+	}
+	.section-character-portrait{
+		height: 160px;
 	}
 	
-	.description-section, .rotation-section{
-		width: 100%;
+	.section-character-portrait>img.banner{
+		height: 160px;
+		//aspect-ratio: 5/1;
+		object-fit: cover;
+		object-position: 0 30%;
+	}
+	
+	.bg-gradient-up{
+		height: 40px;
+		top: -98px;
+	}
+	
+	.notes-section{
+		top: -98px;
+	}
+	
+	.character-notes-label{
+		text-align: center;
+	}
+	.section-character-notes{
+		height: 88px;
+		width: calc(100% - 16px);
+	}
+	
+	.section-character-portrait>.banner[src="./Banner/Blank.png"]{
+		object-fit: contain;
+		object-position: 53% 36%;
 	}
 }
+

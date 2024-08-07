@@ -39,6 +39,7 @@ body{
 	margin-right: 8px;	
 	margin-top: 12px;
 	border: 2px solid transparent;
+	border-radius: 12px;
 }
 
 .team-container:hover{
@@ -336,5 +337,43 @@ body{
 	
 	.top{
 		top: 8px;
+	}
+}
+
+@media only screen and (max-width: 680px){
+	.team-list-mobile{
+		width: calc(100% - 32px);
+	}
+	.site-header{
+		width: 100%;
+	}
+	
+	.body-wrapper{
+		width: 100%;
+	}
+}
+
+/*When the character deck starts becoming squished*/
+@media only screen and (max-width: 464px){
+	.container-character-deck{
+		column-gap: 1px;
+		flex-flow: row wrap;
+		padding: 0 0;
+	}
+	
+	.container-character-portrait{
+		width: 64px;
+		aspect-ratio: 1/1;
+	}
+	
+	.container-character-portrait>img{
+		width: 64px;
+	}
+	
+	.container-character-portrait>.container-character-bg{
+		width: 52px;
+		height: 52px;
+		top: -60px;
+		left: 11px;
 	}
 }
