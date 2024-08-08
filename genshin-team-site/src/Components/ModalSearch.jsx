@@ -48,6 +48,7 @@ export default function CharacterSearch({CharacterPortrait, setPreviewCharacter}
 		setPreviewSearchQuery("");
 	}, [context.modalActive]);
 	
+	
 	useEffect(() =>{
 		if(gridRef.current.children.length > 0){
 			for(let i = 0; i < gridRef.current.children.length; i++){
@@ -55,7 +56,7 @@ export default function CharacterSearch({CharacterPortrait, setPreviewCharacter}
 				fitText(section.querySelector(".portrait-name"));
 			}
 		}
-	}, [searchQuery]);
+	});
 	
 	
 	function populateWithData(){
@@ -71,7 +72,7 @@ export default function CharacterSearch({CharacterPortrait, setPreviewCharacter}
 				character.rarity === "5" ? color = "linear-gradient(180deg, rgb(153,108,66), rgb(223,145,79))" 
 										 : color = "linear-gradient(180deg, rgb(104,96,142), rgb(150,117,194))";
 										 
-				return <CharacterPortrait key={crypto.randomUUID()} clickEvent={() => {setPreviewCharacter(character.name)}}
+				return <CharacterPortrait key={crypto.randomUUID()} clickEvent={() => {setPreviewCharacter(character.name);}}
 					  bgColor={color} name={character.name} element={character.element} className="character-select-icon"/>;
 			}
 			return null;
