@@ -140,12 +140,13 @@ body{
 	color: white;
 	margin: 40px 20%;
 	border: 2px solid white;
-	//filter: drop-shadow(8px 8px black);
 	background-color: rgb(61,69,85);
 	height: 88%;
 	border-radius: 8px;
 	display: flex;
 	flex-flow: column nowrap;
+	animation-name: mobile-modal-appear-from-bottom;
+	animation-duration: 0.2s;
 }
 
 .modal-top{
@@ -257,8 +258,7 @@ body{
 
 .modal-search-form{
 	width: 82%;
-	margin-bottom: 8px;
-	margin-top: 4px;
+	margin-top: 16px;
 	color: white;
 	font-size: 28px;
 	background-color: rgba(0,0,0,0);
@@ -319,6 +319,8 @@ body{
 	.team-list-mobile{
 		z-index: 100;
 		display: block;
+		animation-name: mobile-team-list-appear-from-left;
+		animation-duration: 0.2s;
 	}
 	
 	.team-list-tab-blur{
@@ -340,6 +342,13 @@ body{
 	}
 }
 
+@media only screen and (max-width: 1015px){
+	.character-select-icon{
+		width:15%;	
+		min-width: 80px;
+	}
+}
+
 @media only screen and (max-width: 680px){
 	.team-list-mobile{
 		width: calc(100% - 32px);
@@ -350,6 +359,26 @@ body{
 	
 	.body-wrapper{
 		width: 100%;
+	}
+	
+	.team-list-tab{
+		background-color: rgba(34,34,34,0.9);
+	}
+	
+	.modal-box{
+		margin: 40px 0 0 0;
+		height: calc(100% - 100px);
+		border: 0px;
+		border-top: 2px solid white;
+		
+	}
+	
+	.modal-box-character-grid{
+		flex-grow: 2;
+	}
+	
+	.modal-box-button-container{
+		//flex-grow: 1;
 	}
 }
 
@@ -375,5 +404,28 @@ body{
 		height: 52px;
 		top: -60px;
 		left: 11px;
+	}
+	
+
+}
+
+@keyframes mobile-modal-appear-from-bottom{
+	from{
+		bottom: -100%;
+		position: relative;
+	}
+	to{
+		bottom: -40px;
+		position: fixed;
+	}
+	
+}
+
+@keyframes mobile-team-list-appear-from-left{
+	from{
+		left: -100%;
+	}
+	to{
+		left: 0;
 	}
 }
