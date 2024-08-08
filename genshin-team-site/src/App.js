@@ -144,7 +144,7 @@ export default function App() {
   return (
 		<UserContext.Provider  value={value}>
 			<div className="body-wrapper">
-				<Header setShowTeams={setShowTeams} showTeams={showTeams}/>
+				<Header setShowTeams={setShowTeams} showTeams={showTeams} setModalActive={setModalActive}/>
 				<div className="content-wrapper">
 					{toggleTeamList()}
 					<TeamScreen currentTeam={team} delete={deleteFromList}/>
