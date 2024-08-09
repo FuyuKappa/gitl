@@ -9,6 +9,7 @@ export default function TeamScreenCharacterSection({character, note, index}){
 	
 	function openModal(e){
 		e.stopPropagation();
+		context.saveTeam({notifyUser: false});
 		context.openModal(character, index); 
 	}
 	

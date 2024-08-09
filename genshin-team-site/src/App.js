@@ -9,65 +9,7 @@ import { useMediaQuery } from 'react-responsive';
 export const UserContext = createContext();
 
 export default function App() {
-	/*
-	let test = [ {
-		name: "Team 1",
-		id: crypto.randomUUID(),
-		characters: [
-			"Hu Tao",
-			"Yanfei",
-			"Yelan",
-			"Barbara"
-		],
-		notes:[
-			"This HU tao",
-			"This is Yanfei, she hits",
-			"Yelan is vape support",
-			"Barbara keeps the team alive"
-		],
-		description: "This is the best team.",
-		rotation: "Yelan E Q > Barbara E > Hu Tao E Then NC any amount of times hell yeah",
-		active: false
-		},{
-		name: "Team 2",
-		id: crypto.randomUUID(),
-		characters: [
-			"Ganyu",
-			"Hu Tao",
-			"Raiden Shogun",
-			"Barbara"
-		],
-		notes:[
-			"Ganyu is cryo",
-			"Hu Tao will melt",
-			"Raiden is skill support",
-			"Barbara keeps the team alive"
-		],
-		description: "This is a test team. But technically this is a melt comp with ganyu as the off-field cryo applier.",
-		rotation: "This team rotates",
-		active: false
-		},{
-		name: "New Team",
-		id: crypto.randomUUID(),
-		characters: [
-			"Wriothesley",
-			"",
-			"Al Haitham",
-			"Barbara"
-		],
-		notes:[
-			"This is just a test",
-			"",
-			"Barbara will be blank",
-			""
-		],
-		description: "This is a test team with a blank character",
-		rotation: "This team CANNOT rotate.",
-		active: false		
-	} ] */
-
 	const [teams, setTeams] = useState(() =>{
-		//console.log("Attempting to read local storage");
 		
 		let storedTeams  = JSON.parse(localStorage.getItem("genshinTeams"));
 
@@ -75,7 +17,10 @@ export default function App() {
 			console.log("No genshin teams found");
 			return [];
 		}
-		//console.log("Stored team found");
+		storedTeams = storedTeams.map(team =>{
+			return {...team, active: false}
+		});
+
 		return storedTeams;
 	});
 	
@@ -136,15 +81,48 @@ export default function App() {
 			return <></>;
 	}
 	
+	function saveTeam(options = {}){
+		if(Object.keys(team).length === 0) return;
+			
+			
+		let switchActive = options.switchActive !== undefined ? options.switchActive : true;
+		let notifyUser = options.notifyUser !== undefined ? options.notifyUser : true;
+		console.log(notifyUser);
+		if(notifyUser) alert("Team saved!");
+		
+		let noteForms = document.querySelectorAll(".notes-form");
+		let notes = [];
+		for(let i = 0; i < 4; i++){
+			notes[i]  = noteForms[i].value.trim();
+		}
+		let description = document.querySelector(".description-text").value.trim();
+		let rotation = document.querySelector(".rotation-text").value.trim();
+		
+		setTeams(currentTeams=>{
+			return currentTeams.map((currentTeam) =>{
+				if(currentTeam.id === team.id)
+					return {...team, notes: notes, description: description, rotation: rotation}
+				return currentTeam;
+			}) 
+		})
+		
+		//update the team screen
+		setTeam(() => {return {...team, notes: notes, description: description, rotation: rotation}});
+
+		//update the active
+		if(switchActive) toggleTeamActive(team.id);
+	}
+	
 	const value={
 		previewTeam, teams, setTeams, setTeam,
 		addToList, toggleTeamActive, currentTeamID: team.id,
-		setModalActive, modalActive ,team, openModal, setShowTeams, showTeams
+		setModalActive, modalActive ,team, openModal, setShowTeams, showTeams,
+		saveTeam
 	}
   return (
 		<UserContext.Provider  value={value}>
 			<div className="body-wrapper">
-				<Header setShowTeams={setShowTeams} showTeams={showTeams} setModalActive={setModalActive}/>
+				<Header setShowTeams={setShowTeams} showTeams={showTeams} setModalActive={setModalActive} saveTeam={saveTeam}/>
 				<div className="content-wrapper">
 					{toggleTeamList()}
 					<TeamScreen currentTeam={team} delete={deleteFromList}/>

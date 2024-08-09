@@ -2,8 +2,6 @@ import { useState, useContext } from 'react';
 import { UserContext } from "../App";
 
 export default function TeamName(props){
-	//console.log(props);
-	//let {teamName, containerID} = props;
 	let teamName = props.teamName;
 	let containerID = props.id;
 	
@@ -34,7 +32,7 @@ export default function TeamName(props){
 		e.stopPropagation();
 		if(!id && id !== containerID) id = containerID;
 		else if(id && id !== containerID && containerID) id = containerID;
-		
+		context.saveTeam({notifyUser: false, switchTeams: true});
 		context.setTeams(currentTeams =>{
 			return currentTeams.map(currentTeam => {
 				if(currentTeam.id === id)
@@ -45,9 +43,10 @@ export default function TeamName(props){
 		});
 		
 		let newTeam = context.teams.filter(team=>team.id===id)[0];
-		newTeam.name = newName;		
-		toggleTeamActive(id);
-		previewTeam(newTeam);
+		newTeam.name = newName;
+		
+		//toggleTeamActive(id);
+		//previewTeam(newTeam);
 		setEditing(() => {return false});
 	}
 	

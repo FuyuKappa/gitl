@@ -2,14 +2,15 @@
 import MediaQuery from 'react-responsive';
 //import { useState } from 'react';
 
-export default function SiteHeader({setShowTeams, showTeams, setModalActive}){
+export default function SiteHeader({setShowTeams, showTeams, setModalActive, saveTeam}){
 	//const [teamsShow, setTeamsShow] = useState(false);
 	const className = "teams-toggle teams-toggle-" + showTeams;
 	
 	return(
 		<div className="site-header">
 			<MediaQuery maxWidth={1419}>
-			  <div className={className} onClick={() => {setShowTeams(() => !showTeams); setModalActive(false)}}>
+			  <div className={className} onClick={() => {setShowTeams(() => !showTeams);
+			  setModalActive(false); saveTeam({notifyUser:false, switchTeams:false})}}>
 				Teams
 			  </div>
 			</MediaQuery>

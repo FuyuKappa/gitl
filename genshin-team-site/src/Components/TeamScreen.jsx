@@ -18,36 +18,13 @@ export default function TeamScreen(props){
 		)
 	}
 	
-	function saveTeam(e){
-		e.preventDefault();
-		let notes = [
-			e.target.note0.value.trim(),
-			e.target.note1.value.trim(),
-			e.target.note2.value.trim(),
-			e.target.note3.value.trim()
-		]
-		let description = e.target.description.value.trim();
-		let rotation = e.target.rotation.value.trim();
-		
-		context.setTeams(currentTeams=>{
-			return currentTeams.map((currentTeam) =>{
-				if(currentTeam.id === team.id)
-					return {...team, notes: notes, description: description, rotation: rotation}
-				return currentTeam;
-			}) 
-		})
-		
-		//update the team screen
-		context.setTeam(() => {return {...team, notes: notes, description: description, rotation: rotation}});
-
-		//update the active
-		context.toggleTeamActive(team.id);
-	}
+	
 	
 	function SaveButton(){
 		return(
-			<input type="submit" className="save-button" value="Save changes">
-			</input>
+			<button type="submit" className="save-button" value="Save changes" onClick={() => context.saveTeam()}>
+				Save changes
+			</button>
 		)
 	}
 	
@@ -64,7 +41,7 @@ export default function TeamScreen(props){
 				<div className="team-name">
 					{team.name}
 				</div>
-			<form className="team-screen-form" onSubmit={(e)=>saveTeam(e)}>
+			<div className="team-screen-form">
 				
 				<center>
 				<hr style={{border: "1px solid white", width: "100%"}}/>
@@ -81,7 +58,7 @@ export default function TeamScreen(props){
 				<Rotation teamRotation={team.rotation} />
 				
 				<DeleteButton />
-			</form>
+			</div>
 		</div>
 	)
 }

@@ -7,6 +7,7 @@ export default function TeamContainer({team}){
 	const {name, id, characters, active} = team;
 	const previewTeam = useContext(UserContext).previewTeam;
 	const toggleTeamActive = useContext(UserContext).toggleTeamActive;
+	const saveTeam = useContext(UserContext).saveTeam;
 	const className = "team-container team-container-" + active;
 	
 	let characterList = [];	
@@ -17,7 +18,7 @@ export default function TeamContainer({team}){
 	}
 	
 	return(
-		<div className={className} onClick={() => {previewTeam(team); toggleTeamActive(id)}}>
+		<div className={className} onClick={() => {saveTeam({switchActive: true, notifyUser: false}); previewTeam(team); toggleTeamActive(id);}}>
 			<Name teamName={name} id={id} selected={active}/>
 			<hr style={{margin: '4px 8px'}} />
 				{/*Resnance deck (component = resonance deck)
