@@ -307,3 +307,18 @@
 	}
 }
 
+@media only screen and (max-width: 680px){
+	.description-text{
+		height: 120px;
+	}
+	.rotation-text{
+		height: 120px;
+	}	
+	.save-button{
+		width: 60%;
+	}
+}
+
+@media only screen and (max-width: 464px){
+	
+}
