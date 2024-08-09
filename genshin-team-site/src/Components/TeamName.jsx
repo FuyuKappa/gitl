@@ -14,8 +14,8 @@ export default function TeamName(props){
 	
 	const context = useContext(UserContext);
 	const teamID = context.currentTeamID;
-	const toggleTeamActive = context.toggleTeamActive;
-	const previewTeam = context.previewTeam;
+	//const toggleTeamActive = context.toggleTeamActive;
+	//const previewTeam = context.previewTeam;
 	
 	function toggleEdit(e){
 		e.stopPropagation();
