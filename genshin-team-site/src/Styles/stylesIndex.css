@@ -39,7 +39,6 @@ body{
 	margin-right: 8px;	
 	margin-top: 12px;
 	border: 2px solid transparent;
-	border-radius: 12px;
 }
 
 .team-container:hover{
@@ -295,6 +294,11 @@ body{
 	//border-bottom: 2px solid black;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
+}
+
+.site-header-left{
+	display: flex;
 }
 
 .teams-toggle{
