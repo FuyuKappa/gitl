@@ -1,13 +1,13 @@
 import {default as Name} from "./TeamName";
 import {default as CharacterPortrait} from "./ContainerCharacterPortrait";
 import { useContext } from "react";
-import { UserContext } from "../App";
+import { SiteContext } from "../App";
 
 export default function TeamContainer({team}){
 	const {name, id, characters, active} = team;
-	const previewTeam = useContext(UserContext).previewTeam;
-	const toggleTeamActive = useContext(UserContext).toggleTeamActive;
-	const saveTeam = useContext(UserContext).saveTeam;
+	const previewTeam = useContext(SiteContext).previewTeam;
+	const toggleTeamActive = useContext(SiteContext).toggleTeamActive;
+	const saveTeam = useContext(SiteContext).saveTeam;
 	const className = "team-container team-container-" + active;
 	
 	let characterList = [];	

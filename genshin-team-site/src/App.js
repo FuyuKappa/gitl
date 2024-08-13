@@ -1,35 +1,79 @@
-import TeamListTab from "./Components/TeamListTab";
-import TeamScreen from "./Components/TeamScreen";
-import CharacterModal from "./Components/CharacterModal";
-import Header from "./Components/SiteHeader";
-import './Styles/stylesIndex.css';
-import { useState, createContext, useEffect } from "react";
-import { useMediaQuery } from 'react-responsive';
+//import './Styles/stylesIndex.css';
+import GenshinPage from "./Pages/GenshinPage";
+import AzurLanePage from "./Pages/AzurLanePage";
+import WutheringWavesPage from "./Pages/WutheringWavesPage";
+import { useState, useEffect , createContext, useCallback } from "react";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    /*Link,*/
+    useNavigate,
+} from "react-router-dom";
 
-export const UserContext = createContext();
+export const SiteContext = createContext();
+
+function Home(){
+	const navigate = useNavigate();
+	
+	return(
+		<div>
+			<h1> Home Page </h1>
+			
+			<ul>
+				<li onClick={() => {
+					navigate("/GenshinImpact");
+				}}>
+					Genshin Impact Team Maker
+				</li>
+				
+				<li onClick={() => {
+					navigate("/AzurLane");
+				}}>
+				Azur Lane Team Maker
+				</li>
+				<li onClick={() => {
+					navigate("/WutheringWaves");
+				}}>
+				Wuthering Waves Team Maker
+				</li>
+			</ul>
+		</div>
+	)
+}
 
 export default function App() {
-	const [teams, setTeams] = useState(() =>{
+	function getFromLocalStorage(){
+		let currSite = window.location.href.split("/")[3];
+		//console.log(currSite);
+		let storedTeams  = JSON.parse(localStorage.getItem(currSite + "Teams"));
 		
-		let storedTeams  = JSON.parse(localStorage.getItem("genshinTeams"));
-
 		if(storedTeams === undefined || storedTeams === null || storedTeams === "undefined") {
-			console.log("No genshin teams found");
+			console.log("No " + currSite +  " teams found");
 			return [];
 		}
 		storedTeams = storedTeams.map(team =>{
 			return {...team, active: false}
 		});
-
+		//console.log(storedTeams);
 		return storedTeams;
-	});
+	}
+	
+	const [teams, setTeams] = useState(() => getFromLocalStorage());
 	
 	useEffect(() => {
-		localStorage.setItem("genshinTeams", JSON.stringify(teams));
+		//console.log("saved: " + teams);
+		let currSite = window.location.href.split("/")[3];
+		localStorage.setItem(currSite + "Teams", JSON.stringify(teams));
 	}, [teams]);	
 	
+	const setFromLocalStorage = useCallback(() =>{
+		setTeams(() => getFromLocalStorage());
+	}, []);
+	
+	
 	function addToList(){
-		console.log(teams);
+		//console.log(teams);
 		const newTeam = { name: "New Team", id: crypto.randomUUID(), characters: [], notes: ["","","",""], description: "", rotation: "", active: true };
 		setTeams(() => { return [...teams, newTeam]});
 		previewTeam(newTeam);
@@ -58,6 +102,8 @@ export default function App() {
 	const [team, setTeam] = useState({});
 	
 	function previewTeam(teamStats){
+		console.log("here");
+		console.log(teamStats);
 		setTeam(teamStats);
 	}
 	
@@ -69,16 +115,6 @@ export default function App() {
 		setEditingCharacter(currentCharacter);
 		setEditingPosition(position);
 		setModalActive(true);
-	}
-		
-	const [showTeams, setShowTeams] = useState(false);
-	const isSmallerThan_1419 = useMediaQuery({ maxWidth: 1419 });
-	
-	function toggleTeamList(){
-		if((isSmallerThan_1419 && showTeams) || !isSmallerThan_1419) //render if showTeams is true and smaller than 1419. Render if bigger than 1419
-			return <TeamListTab />;
-		else
-			return <></>;
 	}
 	
 	function saveTeam(options = {}){
@@ -114,26 +150,23 @@ export default function App() {
 	}
 	
 	const value={
-		previewTeam, teams, setTeams, setTeam,
+		previewTeam, setTeam, teams, setTeams,
 		addToList, toggleTeamActive, currentTeamID: team.id,
-		setModalActive, modalActive ,team, openModal, setShowTeams, showTeams,
-		saveTeam
+		setModalActive, modalActive ,team, openModal,
+		saveTeam, deleteFromList, currentEditingCharacter,
+		currentEditingPosition
 	}
-  return (
-		<UserContext.Provider  value={value}>
-			<div className="body-wrapper">
-				<Header setShowTeams={setShowTeams} showTeams={showTeams} setModalActive={setModalActive} saveTeam={saveTeam}/>
-				<div className="content-wrapper">
-					{toggleTeamList()}
-					<TeamScreen currentTeam={team} delete={deleteFromList}/>
-					{ modalActive ? 
-						(<CharacterModal character={currentEditingCharacter} position={currentEditingPosition}/>) :
-						(<></>)	
-					}
-				</div>
-			</div>
-		</UserContext.Provider>
-  );
+	
+	return (
+		<SiteContext.Provider value={value}>
+			<Router>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/GenshinImpact" element={<GenshinPage currSite={"Genshin Impact"} setFromLocal={setFromLocalStorage}/>} />
+					<Route path="/AzurLane" element={<AzurLanePage currSite={"Azur Lane"} setFromLocal={setFromLocalStorage}/>} />
+					<Route path="/WutheringWaves" element={<WutheringWavesPage currSite={"Wuthering Waves"} setFromLocal={setFromLocalStorage}/>} />
+				</Routes>
+			</Router>
+		</SiteContext.Provider>
+	);
 }
-
-

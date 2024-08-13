@@ -1,11 +1,7 @@
 import {default as Container} from "./TeamContainer";
 import {default as NewTeamButton} from "./NewTeamButton";
-import { useContext } from "react";
-import { UserContext } from "../App";
 
-export default function TeamListSection(){
-	const teams = useContext(UserContext).teams;
-	const addToList = useContext(UserContext).addToList;
+export default function TeamListSection({teams, setTeams}){
 
 	return(
 		<div className="team-list-section">
@@ -15,7 +11,7 @@ export default function TeamListSection(){
 				})
 				: (<></>)
 			}
-			<NewTeamButton addFunction={addToList} />
+			<NewTeamButton teams={teams} setTeams={setTeams}/>
 		</div>
 	)
 }

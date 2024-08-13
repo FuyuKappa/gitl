@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
-import { UserContext } from '../App';
+import { SiteContext } from "../App";
 
 export default function TeamRotation({teamRotation}){
 	const [rotation, setRotation] = useState(teamRotation);
-	const contextTeam = useContext(UserContext).team;
+	const contextTeam = useContext(SiteContext).team;
 	
 	useEffect(() => {
 		setRotation(teamRotation);

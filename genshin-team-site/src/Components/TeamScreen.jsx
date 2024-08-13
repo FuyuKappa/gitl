@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UserContext } from "../App";
+import { SiteContext } from "../App";
 import '../Styles/stylesTeamScreen.css';
 import { default as CharacterDeck } from "./TeamScreenCharacterDeck";
 //import { default as TeamName } from "./TeamName";
@@ -7,18 +7,18 @@ import { default as Description } from "./TeamDescription";
 import { default as Rotation } from "./TeamRotation";
 
 export default function TeamScreen(props){
-	let team = props.currentTeam;
-	const context = useContext(UserContext);
+	//let team = props.currentTeam;
+	const context = useContext(SiteContext);
+	let team = context.team;
 	
+	console.log(team);
 	function DeleteButton(){
 		return(
-			<button className="delete-button" onClick={() => props.delete(team.id)}>
+			<button className="delete-button" onClick={() => context.deleteFromList(team.id)}>
 				Delete Team
 			</button>
 		)
 	}
-	
-	
 	
 	function SaveButton(){
 		return(

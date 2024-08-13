@@ -1,11 +1,10 @@
 import { useState, useContext} from "react";
-import { UserContext } from "../App";
+import { SiteContext } from "../App";
 
 export default function TeamScreenCharacterSection({character, note, index}){
 	const [currentNote, setNote] = useState(note);
 	let noteID = "note" + index; 
-	
-	const context = useContext(UserContext);
+	const context = useContext(SiteContext);
 	
 	function openModal(e){
 		e.stopPropagation();

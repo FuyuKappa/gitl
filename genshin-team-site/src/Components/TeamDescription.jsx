@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
-import { UserContext } from '../App';
+import { SiteContext } from "../App";
 
 export default function TeamDescription({teamDescription}){
 	const [description, setDescription] = useState(teamDescription);
-	const contextTeam = useContext(UserContext).team;
+	const contextTeam = useContext(SiteContext).team;
 	
 	useEffect(() => {
 		setDescription(teamDescription);

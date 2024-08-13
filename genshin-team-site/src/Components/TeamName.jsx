@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { UserContext } from "../App";
+import { SiteContext } from "../App";
 
 export default function TeamName(props){
 	let teamName = props.teamName;
@@ -12,7 +12,7 @@ export default function TeamName(props){
 	const [editing, setEditing] = useState(false);
 	const [newName, setNewName] = useState("");
 	
-	const context = useContext(UserContext);
+	const context = useContext(SiteContext);
 	const teamID = context.currentTeamID;
 	//const toggleTeamActive = context.toggleTeamActive;
 	//const previewTeam = context.previewTeam;
@@ -29,9 +29,17 @@ export default function TeamName(props){
 	}
 	
 	function confirmEdit(id, newName, e){
+		console.log(newName);
 		e.stopPropagation();
-		if(!id && id !== containerID) id = containerID;
-		else if(id && id !== containerID && containerID) id = containerID;
+		let diffFlag = false;
+		if(!id && id !== containerID){
+			id = containerID;
+			diffFlag = true;
+		}
+		else if(id && id !== containerID && containerID){
+			id = containerID;
+			diffFlag = true;
+		}
 		context.saveTeam({notifyUser: false, switchTeams: true});
 		context.setTeams(currentTeams =>{
 			return currentTeams.map(currentTeam => {
@@ -46,7 +54,8 @@ export default function TeamName(props){
 		newTeam.name = newName;
 		
 		//toggleTeamActive(id);
-		//previewTeam(newTeam);
+		//only do this if we're not editing the same container
+		if(!diffFlag) context.previewTeam(newTeam);
 		setEditing(() => {return false});
 	}
 	

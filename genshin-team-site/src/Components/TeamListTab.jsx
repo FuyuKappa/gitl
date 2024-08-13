@@ -1,17 +1,17 @@
 import {default as Section} from "./TeamListSection";
 //import { useEffect } from "react";
 import { useContext } from "react";
-import { UserContext } from "../App";
+import { UserContext } from "../Pages/GenshinPage";
 import { useMediaQuery } from "react-responsive";
 
-export default function TeamListTab(){
+export default function TeamListTab({teams, setTeams}){
 	const isSmallerThan_1419 = useMediaQuery({ maxWidth: 1419 });
 	const isSmallerThan_680 = useMediaQuery({ maxWidth: 680 });
 	const className = "team-list-tab " + (isSmallerThan_1419 ? "team-list-mobile" : "");
-	
+	//console.log(setTeams);
 	
 	const context = useContext(UserContext);
-	const teamCount = context.teams.length;
+	const teamCount = teams.length ;
 	
 	function blurClick(e){
 		e.stopPropagation();
@@ -32,7 +32,7 @@ export default function TeamListTab(){
 					<span className="team-list-header-label">Teams | { teamCount ? teamCount: "No teams found" }</span>
 				</div>
 				<hr />
-				<Section />
+				<Section teams={teams} setTeams={setTeams}/>
 			</div>
 		</>
 	)

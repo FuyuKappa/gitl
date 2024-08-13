@@ -1,10 +1,10 @@
 import {GenshinCharacterData as data} from "../Data/GenshinCharacters"
 import { useContext, useState, useRef, useEffect } from "react";
-import { UserContext } from "../App";
+import { SiteContext } from "../App";
 import { default as CharacterSearch } from "./ModalSearch";
  
 export default function CharacterModal({character, position}){
-	const context = useContext(UserContext);
+	const context = useContext(SiteContext);
 	const [previewCharacter, setPreviewCharacter] = useState("Blank");
 	const previewRef = useRef(null);
 	
@@ -51,19 +51,21 @@ export default function CharacterModal({character, position}){
 	}, [previewCharacter]);
 	
 	function editCharacter(newCharacter){
+		console.log(position);
 		if(newCharacter !== "Blank"){
 			context.setTeams(currentTeams => {
 				return currentTeams.map(team => {
 					if(context.team.id === team.id){
 						let characters = team.characters;
 						characters[position] = newCharacter;
+						console.log(position);
 						return {...team, characters: characters};
 					}
 					
 					return team;
 				});
 			});
-			 context.setModalActive(false)
+			context.setModalActive(false)
 		}
 	}
 	

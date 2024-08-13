@@ -1,9 +1,9 @@
 import {GenshinCharacterData as data} from "../Data/GenshinCharacters"
 import { useContext, useState, useEffect, useRef } from "react";
-import { UserContext } from "../App";
+import { SiteContext } from "../App";
 
 export default function CharacterSearch({CharacterPortrait, setPreviewCharacter, fitText}){
-	const context = useContext(UserContext);
+	const context = useContext(SiteContext);
 	const [searchQuery, setPreviewSearchQuery] = useState("");
 	const gridRef = useRef(null);
 	
