@@ -1,17 +1,17 @@
-//import { useMediaQuery } from 'react-responsive';
 import MediaQuery from 'react-responsive';
-//import { useState } from 'react';
+import { SiteContext } from "../App"
+import { useContext } from "react";
 
-export default function SiteHeader({currentSite, setShowTeams, showTeams, setModalActive, saveTeam}){
-	//const [teamsShow, setTeamsShow] = useState(false);
-	const className = "teams-toggle teams-toggle-" + showTeams;
+export default function SiteHeader({currentSite}){
+	const context = useContext(SiteContext);
+	const className = "teams-toggle teams-toggle-" + context.showTeams;
 	
 	return(
 		<div className="site-header">
 			<div className="site-header-left">
 				<MediaQuery maxWidth={1419}>
-				  <div className={className} onClick={() => {setShowTeams(() => !showTeams);
-				  setModalActive(false); saveTeam({notifyUser:false, switchTeams:false})}}>
+				  <div className={className} onClick={() => {context.setShowTeams(() => !context.showTeams);
+				  context.setModalActive(false); context.saveTeam({notifyUser:false, switchTeams:false})}}>
 					Teams
 				  </div>
 				</MediaQuery>
