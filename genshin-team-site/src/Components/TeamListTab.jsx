@@ -1,16 +1,18 @@
 import {default as Section} from "./TeamListSection";
 //import { useEffect } from "react";
-import { useContext } from "react";
-import { UserContext } from "../Pages/GenshinPage";
+import { useContext, createContext } from "react";
+import { SiteContext } from "../App"
 import { useMediaQuery } from "react-responsive";
 
-export default function TeamListTab({teams, setTeams}){
+export const ListContext = createContext();
+
+export default function TeamListTab({teams, setTeams, teamSize, currSite}){
 	const isSmallerThan_1419 = useMediaQuery({ maxWidth: 1419 });
 	const isSmallerThan_680 = useMediaQuery({ maxWidth: 680 });
 	const className = "team-list-tab " + (isSmallerThan_1419 ? "team-list-mobile" : "");
 	//console.log(setTeams);
 	
-	const context = useContext(UserContext);
+	const context = useContext(SiteContext);
 	const teamCount = teams.length ;
 	
 	function blurClick(e){
@@ -20,8 +22,12 @@ export default function TeamListTab({teams, setTeams}){
 		console.log(e.target.className);
 	}
 	
+	const value = {
+		teamSize, currSite
+	}
+	
 	return(
-		<>	
+		<ListContext.Provider value={value}>	
 			{ isSmallerThan_1419 && !isSmallerThan_680 ?
 				<div className="team-list-tab-blur" onClick={(e) => blurClick(e)}>
 				</div> :
@@ -34,6 +40,6 @@ export default function TeamListTab({teams, setTeams}){
 				<hr />
 				<Section teams={teams} setTeams={setTeams}/>
 			</div>
-		</>
+		</ListContext.Provider>
 	)
 }
