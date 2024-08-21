@@ -1,8 +1,7 @@
-import {GenshinCharacterData as data} from "../Data/GenshinCharacters"
 import { useContext, useState, useEffect, useRef } from "react";
 import { SiteContext } from "../App";
 
-export default function CharacterSearch({CharacterPortrait, setPreviewCharacter, fitText}){
+export default function CharacterSearch({CharacterPortrait, setPreviewCharacter, fitText, data}){
 	const context = useContext(SiteContext);
 	const [searchQuery, setPreviewSearchQuery] = useState("");
 	const gridRef = useRef(null);
@@ -39,8 +38,8 @@ export default function CharacterSearch({CharacterPortrait, setPreviewCharacter,
 				character.rarity === "5" ? color = "linear-gradient(180deg, rgb(153,108,66), rgb(223,145,79))" 
 										 : color = "linear-gradient(180deg, rgb(104,96,142), rgb(150,117,194))";
 										 
-				return <CharacterPortrait key={crypto.randomUUID()} clickEvent={() => {setPreviewCharacter(character.name);}}
-					  bgColor={color} name={character.name} element={character.element} className="character-select-icon"/>;
+				return <CharacterPortrait key={crypto.randomUUID()} clickEvent={() => {setPreviewCharacter({name: character.name, element: character.element});}}
+					  bgColor={color} name={character.name} element={character.element} className="character-select-icon" character={character }/>;
 			}
 			return null;
 		});

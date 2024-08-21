@@ -1,9 +1,8 @@
-import {GenshinCharacterData as data} from "../Data/GenshinCharacters"
 import { useContext, useState, useRef, useEffect } from "react";
 import { SiteContext } from "../App";
 import { default as CharacterSearch } from "./ModalSearch";
  
-export default function CharacterModal({character, position}){
+export default function CharacterModal({character, position, data, currSite}){
 	const context = useContext(SiteContext);
 	const [previewCharacter, setPreviewCharacter] = useState("Blank");
 	const previewRef = useRef(null);
@@ -52,7 +51,7 @@ export default function CharacterModal({character, position}){
 	
 	function editCharacter(newCharacter){
 		console.log(position);
-		if(newCharacter !== "Blank"){
+		if(Object.keys(newCharacter).length !== 0 && newCharacter.name !== "Blank"){
 			context.setTeams(currentTeams => {
 				return currentTeams.map(team => {
 					if(context.team.id === team.id){
@@ -69,11 +68,11 @@ export default function CharacterModal({character, position}){
 		}
 	}
 	
-	function CharacterPortrait({clickEvent, bgColor, name, element, className}){
+	function CharacterPortrait({clickEvent, bgColor, name, element, className, character}){
 		if(bgColor === null || bgColor === undefined){
 			for(let i = 0; i < data.length; i++){
-				let character = data[i]
-				if(character.name === name){
+				let currCharacter = data[i]
+				if(currCharacter.name === character.name){
 					character.rarity === "5" ? bgColor = "linear-gradient(180deg, rgb(153,108,66), rgb(223,145,79))" 
 											 : bgColor = "linear-gradient(180deg, rgb(104,96,142), rgb(150,117,194))";
 					element = character.element;
@@ -83,14 +82,14 @@ export default function CharacterModal({character, position}){
 		}
 		return(
 			<div className={className} key={crypto.randomUUID()} onClick={clickEvent}>
-				<img src={"./Portrait/" + name + ".png"} style={{background: bgColor}} alt={name}/>
+				<img src={"./"+ currSite + "/Portrait/" + character.name + ".png"} style={{background: bgColor}} alt={character.name}/>
 				
 				<div className="element-icon">
-					<img className="element-icon-image" src={"./Element/" + element + ".png"} alt={element}/>
+					<img className="element-icon-image" src={"./"+ currSite + "/Element/" + character.element + ".png"} alt={character.element}/>
 				</div>
 				
 				<div className="portrait-name">
-					{name}
+					{character.name}
 				</div>
 			</div>
 		);
@@ -109,12 +108,12 @@ export default function CharacterModal({character, position}){
 					</svg>
 				</div>
 				<div className="modal-box-preview" ref={previewRef}>
-					<CharacterPortrait name={character} className="character-select-icon character-select-preview" />
+					<CharacterPortrait character={character} className="character-select-icon character-select-preview" />
 					->
-					<CharacterPortrait name={previewCharacter} className="character-select-icon character-select-preview" />
+					<CharacterPortrait character={previewCharacter} className="character-select-icon character-select-preview" />
 				</div>
 				
-				<CharacterSearch CharacterPortrait={CharacterPortrait} setPreviewCharacter={setPreviewCharacter} fitText={fitText}/>
+				<CharacterSearch CharacterPortrait={CharacterPortrait} setPreviewCharacter={setPreviewCharacter} fitText={fitText} data={data}/>
 				
 				<div className="modal-box-button-container">
 					<button onClick={() => context.setModalActive(false)}>Cancel</button>
