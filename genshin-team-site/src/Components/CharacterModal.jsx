@@ -3,6 +3,7 @@ import { SiteContext } from "../App";
 import { default as CharacterSearch } from "./ModalSearch";
  
 export default function CharacterModal({character, position, data, currSite}){
+	console.log(character);
 	const context = useContext(SiteContext);
 	const [previewCharacter, setPreviewCharacter] = useState("Blank");
 	const previewRef = useRef(null);
