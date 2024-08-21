@@ -3,16 +3,19 @@ import TeamScreen from "../Components/TeamScreen";
 import CharacterModal from "../Components/CharacterModal";
 import Header from "../Components/SiteHeader";
 import { SiteContext } from "../App"
-import { createContext, useEffect, useContext } from "react";
-import { useMediaQuery } from 'react-responsive';
 
-export const UserContext = createContext();
+import { Helmet, HelmetProvider } from "react-helmet-async";
+
+import { useContext, useEffect } from "react";
+import { useMediaQuery } from 'react-responsive';
+import {WuwaCharacterData as data} from "../Data/WutheringWavesCharacters"
 
 export default function WutheringWavesPage({currSite, setFromLocal}){
 	const siteContext = useContext(SiteContext);
 	let teams = siteContext.teams;
 	let setTeams = siteContext.setTeams;
-	console.log(teams);
+	const teamSize = 3;
+	
 	useEffect(() =>{
 		setFromLocal();
 	},[setFromLocal]);
@@ -20,22 +23,28 @@ export default function WutheringWavesPage({currSite, setFromLocal}){
 	const isSmallerThan_1419 = useMediaQuery({ maxWidth: 1419 });
 	function toggleTeamList(){
 		if((isSmallerThan_1419 && siteContext.showTeams) || !isSmallerThan_1419) //render if showTeams is true and smaller than 1419. Render if bigger than 1419
-			return <TeamListTab teams={teams} setTeams={setTeams}/>;
+			return <TeamListTab teams={teams} setTeams={setTeams} teamSize={teamSize} currSite={currSite}/>;
 		else
 			return <></>;
 	}
 	
 	return(
+		<HelmetProvider>
 			<div className="body-wrapper">
+				<Helmet>
+					<link rel="stylesheet" href="../Styles/stylesIndex.css" />
+				</Helmet>
+				
 				<Header currentSite={currSite} />
 				<div className="content-wrapper">
 					{toggleTeamList()}
-					<TeamScreen currentTeam={siteContext.team}/>
+					<TeamScreen teamSize={teamSize} currSite={currSite}/>
 					{ siteContext.modalActive ? 
-						(<CharacterModal character={siteContext.currentEditingCharacter} position={siteContext.currentEditingPosition}/>) :
+						(<CharacterModal character={siteContext.currentEditingCharacter} position={siteContext.currentEditingPosition} data={data} currSite={currSite}/>) :
 						(<></>)	
 					}
 				</div>
 			</div>
+		</HelmetProvider>
 	);
 }
