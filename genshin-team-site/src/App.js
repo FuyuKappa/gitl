@@ -117,6 +117,8 @@ export default function App() {
 		setModalActive(true);
 	}
 	
+	const [showTeams, setShowTeams] = useState(false);
+	
 	function saveTeam(options = {}){
 		if(Object.keys(team).length === 0) return;
 			
@@ -128,7 +130,7 @@ export default function App() {
 		
 		let noteForms = document.querySelectorAll(".notes-form");
 		let notes = [];
-		for(let i = 0; i < 4; i++){
+		for(let i = 0; i < options.teamSize; i++){
 			notes[i]  = noteForms[i].value.trim();
 		}
 		let description = document.querySelector(".description-text").value.trim();
@@ -154,7 +156,7 @@ export default function App() {
 		addToList, toggleTeamActive, currentTeamID: team.id,
 		setModalActive, modalActive ,team, openModal,
 		saveTeam, deleteFromList, currentEditingCharacter,
-		currentEditingPosition
+		currentEditingPosition, showTeams, setShowTeams
 	}
 	
 	return (
