@@ -2,6 +2,7 @@
 import GenshinPage from "./Pages/GenshinPage";
 import AzurLanePage from "./Pages/AzurLanePage";
 import WutheringWavesPage from "./Pages/WutheringWavesPage";
+import ZZZPage from "./Pages/ZZZPage";
 import { useState, useEffect , createContext, useCallback } from "react";
 import {
     BrowserRouter as Router,
@@ -36,6 +37,11 @@ function Home(){
 					navigate("/WutheringWaves");
 				}}>
 				Wuthering Waves Team Maker
+				</li>
+				<li onClick={() => {
+					navigate("/ZenlessZoneZero");
+				}}>
+				Zenless Zone Zero Team Maker
 				</li>
 			</ul>
 		</div>
@@ -167,6 +173,7 @@ export default function App() {
 					<Route path="/GenshinImpact" element={<GenshinPage currSite={"Genshin Impact"} setFromLocal={setFromLocalStorage}/>} />
 					<Route path="/AzurLane" element={<AzurLanePage currSite={"Azur Lane"} setFromLocal={setFromLocalStorage}/>} />
 					<Route path="/WutheringWaves" element={<WutheringWavesPage currSite={"Wuthering Waves"} setFromLocal={setFromLocalStorage}/>} />
+					<Route path="/ZenlessZoneZero" element={<ZZZPage currSite={"Zenless Zone Zero"} setFromLocal={setFromLocalStorage}/>} />
 				</Routes>
 			</Router>
 		</SiteContext.Provider>
