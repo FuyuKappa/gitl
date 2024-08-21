@@ -1,10 +1,13 @@
 import { useState, useContext} from "react";
 import { SiteContext } from "../App";
+import { TeamScreenContext } from "./TeamScreen";
 
 export default function TeamScreenCharacterSection({character, note, index}){
 	const [currentNote, setNote] = useState(note);
 	let noteID = "note" + index; 
 	const context = useContext(SiteContext);
+	const currSite = useContext(TeamScreenContext).currSite;
+	const imgClass = "banner" + (character.name==="Blank"? " blank-banner" : "")
 	
 	function openModal(e){
 		e.stopPropagation();
@@ -20,12 +23,12 @@ export default function TeamScreenCharacterSection({character, note, index}){
 		<div className="team-character-section">
 			<div className="section-character-name" onClick={e => openModal(e)}>
 				<center>
-					{character}
+					{character.name}
 				</center>
 			</div>
 			
 			<div className="section-character-portrait" onClick={e => openModal(e)}>
-				 <img className="banner" src={"./Banner/" + character + ".png"} alt={character}></img>
+				 <img className={imgClass} src={"./" + currSite + "/Banner/" + character.name + ".png"} alt={character.name}></img>
 			</div>
 			
 			<div className="bg-gradient-up" onClick={e => openModal(e)}></div>
