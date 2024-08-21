@@ -126,7 +126,7 @@
 	background-color: #333f50;
 }
 
-.section-character-portrait>.banner[src="./Banner/Blank.png"]{
+.section-character-portrait>.banner.blank-banner{
 	object-fit: contain;
 	object-position: 0 36%;
 }
