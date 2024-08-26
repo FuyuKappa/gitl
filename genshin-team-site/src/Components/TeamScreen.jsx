@@ -1,6 +1,5 @@
 import { useContext, createContext } from "react";
 import { SiteContext } from "../App";
-import '../Styles/stylesTeamScreen.css';
 import { default as CharacterDeck } from "./TeamScreenCharacterDeck";
 import { default as Description } from "./TeamDescription";
 import { default as Rotation } from "./TeamRotation";
