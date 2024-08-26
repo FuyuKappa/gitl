@@ -2,6 +2,8 @@ import TeamListTab from "../Components/TeamListTab";
 import TeamScreen from "../Components/TeamScreen";
 import CharacterModal from "../Components/CharacterModal";
 import Header from "../Components/SiteHeader";
+//import "../Styles/Page/stylesGenshinIndex.css";
+//import "../Styles/TeamScreen/styleGenshinTeamScreen.css"
 import { SiteContext } from "../App"
 
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -32,7 +34,9 @@ export default function GenshinPage({currSite, setFromLocal}){
 		<HelmetProvider>
 			<div className="body-wrapper">
 				<Helmet>
-					<link rel="stylesheet" href="../Styles/stylesIndex.css" />
+					<title>Genshin Impact Team Builder</title>
+					<link rel="stylesheet" type="text/css" href="../Styles/Page/stylesGenshinIndex.css" />
+					<link rel="stylesheet" type="text/css" href="./Styles/TeamScreen/stylesGenshinTeamScreen.css" />
 				</Helmet>
 				
 				<Header currentSite={currSite} />

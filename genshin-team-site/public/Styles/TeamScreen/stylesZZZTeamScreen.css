@@ -1,0 +1,323 @@
+.team-screen{
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	background-color: #333f50;
+	color: white;
+	overflow: auto;
+	height: calc(100vh - 60px);
+	align-items: center;
+}
+
+.edit-btn{
+	border-radius: 4px;
+	border: 1px solid white;
+	position: relative;
+	display: inline-block;
+	width: 32px;
+	min-width: 32px;
+	height: 32px;
+	margin: 0 4px;
+	top: 4px;
+}
+
+.team-container-false>.team-name>.edit-btn{
+	border: 1px solid white;
+}
+
+.team-container-true>.team-name>.edit-btn{
+	border: 1px solid black;
+}
+
+.edit-btn:hover{
+	transform: scale(1.2);
+	background-color: rgba(0,0,2, 0.2);
+}
+
+.edit-btn.check{
+	border: 1px solid green;
+}
+
+.edit-btn.cross{
+	border: 1px solid red;
+}
+
+.team-screen>.team-name{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: center;
+	margin: 8px 0;
+}
+
+.bi-pencil, .check-mark, .cross-mark{
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 16px;
+	height: 16px;
+	top: 8px;
+}
+
+
+.check-mark-line{
+	stroke: green;
+	stroke-width:3;
+	stroke-linecap: round;
+}
+
+.cross-mark-line{
+	stroke: red;
+	stroke-width:3;
+	stroke-linecap: round;
+}
+
+.character-deck{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	column-gap: 8px;
+	margin: 0px 16px;
+}
+
+.team-character-section{
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	width: fit-content;
+	max-width: 200px;
+	min-width: 200px;
+	background-color: rgba(0,0,5,1);
+	border-radius: 8px;
+	margin-bottom: 16px;
+	z-index: 1;	
+}
+
+.team-character-section:hover{
+	transform: scale(1.02);
+	cursor: pointer;
+	/*border: 1px solid white;*/
+}
+
+.section-character-name{
+	border-radius: 8px 8px 0 0;
+	background-image: linear-gradient(180deg, rgba(0,0,0,1), rgba(0,0,0,0));
+	height: 60px;
+	position: relative;
+	z-index: 3;
+}
+.section-character-portrait{
+	z-index: 1;
+	position: relative;
+	top: -60px;
+	height: auto;
+}
+
+.section-character-portrait>.banner{
+	border-radius: 8px 8px 0 0;
+	position: relative;
+	object-fit: cover;
+	object-position: 0 15%;
+	width: 100%;
+	height: 444px;
+	background-color: #333f50;
+}
+
+.section-character-portrait>.banner.blank-banner{
+	object-fit: contain;
+	object-position: 0 36%;
+}
+
+.character-notes-label{
+	padding: 0 8px;
+}
+
+.notes-section{
+	position: relative;
+	top: -168px;
+}
+
+.section-character-notes{
+	position: absolute;
+	font-size: 0.7em;
+	background-color: #ebe4d8;
+	margin: 0 8px;
+	width: 184px;
+	height: 160px;
+	
+}
+
+.notes-form{
+	padding-block: 0;
+	padding-inline: 0;
+	border: 0;
+	width: 95%;
+	height: 95%;
+	background-color: rgba(0,0,0,0);
+	font-size: 0.8em;
+	font-family: Helvetica;
+	padding: 4px;
+	resize: none;
+}
+
+.delete-button{
+	width: 100px;
+	height: 40px;
+	background-color: red;
+	cursor: pointer;
+}
+
+.save-button{
+	position: sticky;
+	top: 8px;
+	height: 40px;
+	background-color: green;
+	border: 1px solid white;
+	border-radius: 8px;
+	width: 30%;
+	color: white;
+	font-size: 0.6em;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.save-button:hover{
+	transform: scale(1.02);
+}
+.bg-gradient-down{
+	z-index: 2;
+	position: relative;
+	height: 0px;
+	border: 1px solid red;
+	top: 44px;
+}
+
+.bg-gradient-up{
+	z-index: 2;
+	position: relative;
+	height: 100px;
+	background-image: linear-gradient(0deg, rgba(0,0,0,1), rgba(255,255,255,0));
+	top: -166px;
+}
+
+.team-screen-form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.team-screen-form > center{
+	width: 140%;
+}
+
+.description-section, .rotation-section{
+	width: 140%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.description-text, .rotation-text{
+	border-radius: 8px;
+	width: 100%;
+	font-size: 0.8em;
+	color: white;
+	resize: none;
+	background-color: rgba(0,0,5, 0.2);
+	border: 0;
+}
+
+.description-text{
+	height: 4em;
+}
+
+.description-text:active, .rotation-text:active{
+}
+
+/* when the screen starts getting squished */
+@media only screen and (max-width: 1760px){
+	.team-screen-form > center{
+		width: 100%;
+	}
+	
+	.description-section, .rotation-section{
+		width: 100%;
+	}
+}
+
+/* When the team list is hidden */
+@media only screen and (max-width: 1419px){
+	.team-character-section{
+		width: fit-content;
+		//max-width: 40%;
+		//min-width: 40%;
+	}
+	
+	.team-screen-form{
+		width: 88%;
+	}
+}
+
+/* When the vertical banner stops fitting */
+@media only screen and (max-width: 1015px){
+	.character-deck{
+		flex-flow: column nowrap;
+		width: 80%;
+		align-items: center;
+	}
+	.team-character-section{
+		width: 100%;
+		max-width: 300px;
+	}
+	.section-character-portrait{
+		height: 160px;
+	}
+	
+	.section-character-portrait>img.banner{
+		height: 160px;
+		//aspect-ratio: 5/1;
+		object-fit: cover;
+		object-position: 0 30%;
+	}
+	
+	.bg-gradient-up{
+		height: 40px;
+		top: -98px;
+	}
+	
+	.notes-section{
+		top: -98px;
+	}
+	
+	.character-notes-label{
+		text-align: center;
+	}
+	.section-character-notes{
+		height: 88px;
+		width: calc(100% - 16px);
+	}
+	
+	.section-character-portrait>.banner[src="./Banner/Blank.png"]{
+		object-fit: contain;
+		object-position: 53% 36%;
+	}
+}
+
+@media only screen and (max-width: 680px){
+	.description-text{
+		height: 120px;
+	}
+	.rotation-text{
+		height: 120px;
+	}	
+	.save-button{
+		width: 60%;
+	}
+}
+
+@media only screen and (max-width: 464px){
+	
+}

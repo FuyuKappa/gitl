@@ -2,6 +2,8 @@ import TeamListTab from "../Components/TeamListTab";
 import TeamScreen from "../Components/TeamScreen";
 import CharacterModal from "../Components/CharacterModal";
 import Header from "../Components/SiteHeader";
+//import "../Styles/Page/stylesAzurLaneIndex.css";
+//import "../Styles/TeamScreen/stylesAzurLaneTeamScreen.css"
 import { SiteContext } from "../App"
 
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -32,7 +34,9 @@ export default function AzurLanePage({currSite, setFromLocal}){
 		<HelmetProvider>
 			<div className="body-wrapper">
 				<Helmet>
-					<link rel="stylesheet" href="../Styles/stylesIndex.css" />
+					<title>Azur Lane Team Builder</title>
+					<link rel="stylesheet" type="text/css" href="../Styles/Page/stylesAzurLaneIndex.css" />
+					<link rel="stylesheet" type="text/css" href="../Styles/TeamScreen/stylesAzurLaneTeamScreen.css" />
 				</Helmet>
 				
 				<Header currentSite={currSite} />

@@ -2,6 +2,7 @@ import TeamListTab from "../Components/TeamListTab";
 import TeamScreen from "../Components/TeamScreen";
 import CharacterModal from "../Components/CharacterModal";
 import Header from "../Components/SiteHeader";
+//import "../Styles/TeamScreen/stylesZZZTeamScreen.css"
 import { SiteContext } from "../App"
 
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -32,7 +33,9 @@ export default function ZZZPage({currSite, setFromLocal}){
 		<HelmetProvider>
 			<div className="body-wrapper">
 				<Helmet>
-					<link rel="stylesheet" href="../Styles/stylesIndex.css" />
+					<title>ZZZ Team Builder</title>
+					<link rel="stylesheet" type="text/css" href="../Styles/Page/stylesZZZIndex.css" />
+					<link rel="stylesheet" type="text/css" href="../Styles/TeamScreen/stylesZZZTeamScreen.css" />
 				</Helmet>
 				
 				<Header currentSite={currSite} />
