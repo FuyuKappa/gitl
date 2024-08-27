@@ -55,30 +55,36 @@ body{
 }
 
 .container-character-deck{
+	position: relative;
 	display: flex;
-	column-gap: 8px;
+	column-gap: 0px;
 	padding: 0 8px;
+	left: 20px;
 }
 
 .container-character-portrait{
 	height: 94px;
 	width: 94px;
 	z-index: 3;
-	transform: skew(-12deg);
+	transform: skew(24deg);
 	overflow: hidden;
-	border-right: 1px solid black;
-	border-left: 1px solid black;
+	border-right: 2px solid black;
+	border-left: 2px solid black;
 }
 
 .container-character-portrait>.zzz-portrait{
 	width: 130px;
 	height: 130px;
-	transform: skew(12deg);
+	transform: skew(-24deg);
 	background-repeat: no-repeat;
 	background-size: 115px 115px;
 	position: relative;
 	right: 8px;
 	bottom: 8px;
+}
+
+.container-character-portrait>.zzz-portrait.blank-portrait{
+	bottom: 20px;
 }
 
 /*.container-character-portrait>img:hover{
@@ -90,6 +96,8 @@ body{
 	width: 64px;
 	height: 76px;
 	object-fit: contain;
+	top: 8px;
+	position: relative;
 }
 
 .container-character-portrait>img[src="./Portraits/AddCharacter.png"]:hover{
@@ -397,25 +405,20 @@ body{
 /*When the character deck starts becoming squished*/
 @media only screen and (max-width: 464px){
 	.container-character-deck{
-		column-gap: 1px;
 		flex-flow: row wrap;
 		padding: 0 0;
+		left: 32px;
 	}
 	
 	.container-character-portrait{
-		width: 64px;
-		aspect-ratio: 1/1;
+		width: 72px;
 	}
 	
-	.container-character-portrait>img{
-		width: 64px;
+	.container-character-portrait>.zzz-portrait{
+		right: 24px;
 	}
-	
-	.container-character-portrait>.container-character-bg{
-		width: 52px;
-		height: 52px;
-		top: -60px;
-		left: 11px;
+	.container-character-portrait>.zzz-portrait.blank-portrait{
+		right: 18px;
 	}
 }
 
@@ -423,6 +426,12 @@ body{
 	.modal-box-button-container>button{
 		width: 36%;
 		font-size: 24px;
+	}
+	.container-character-portrait{
+		width: 18%;
+	}
+	.container-character-portrait>.zzz-portrait.blank-portrait{
+		right: 22px;
 	}
 }
 
