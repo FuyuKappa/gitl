@@ -403,6 +403,13 @@ body{
 		width: 64px;
 	}
 	
+	.container-character-portrait>img[alt="AddCharacter"]{
+		width: 64px;
+		position: relative;
+		top: 2px;
+		right: 5px;
+	}
+	
 	.container-character-portrait>.container-character-bg{
 		width: 52px;
 		height: 52px;
