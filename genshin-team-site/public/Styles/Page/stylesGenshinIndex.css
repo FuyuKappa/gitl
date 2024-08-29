@@ -54,6 +54,24 @@ body{
 	color: black;
 }
 
+.team-container-top{
+	display: flex;
+	padding: 0 12px;
+}
+
+.resonance-deck{
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	flex-grow: 1;
+	padding-top: 4px;
+}
+
+.deck-element{
+	width: 32px;
+	height: 32px;
+}
+
 .container-character-deck{
 	display: flex;
 	column-gap: 8px;
@@ -113,18 +131,54 @@ body{
 .team-name{
 	width: 72%;
 	max-width: 72%;
-	padding-left: 12px;
 	word-wrap: break-word;
 }
 
 .name-edit-form{
 	display: flex;
-	flex-flow: row nowrap;
+	flex-wrap: nowrap;
 }
 
 .name-edit-form > input{
 	font-size: inherit;
 	width: calc(100% - 64px);
+}
+
+.edit-btn{
+	border-radius: 4px;
+	border: 1px solid white;
+	position: relative;
+	display: inline-block;
+	width: 32px;
+	min-width: 32px;
+	height: 32px;
+	margin: 0 4px;
+	top: 4px;
+}
+
+.edit-btn-active{
+	border: 1px solid black;
+}
+
+.team-container-false>.team-name>.edit-btn{
+	border: 1px solid white;
+}
+
+.team-container-true>.team-name>.edit-btn{
+	border: 1px solid black;
+}
+
+.edit-btn:hover{
+	transform: scale(1.2);
+	background-color: rgba(0,0,2, 0.2);
+}
+
+.edit-btn.check{
+	border: 1px solid green;
+}
+
+.edit-btn.cross{
+	border: 1px solid red;
 }
 
 .modal-global{
@@ -299,6 +353,12 @@ body{
 
 .site-header-left{
 	display: flex;
+	column-gap: 8px;
+}
+
+.preference-toggle{
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .teams-toggle{
@@ -415,6 +475,13 @@ body{
 		height: 52px;
 		top: -60px;
 		left: 11px;
+	}
+	.resonance-deck{
+		padding-top: 8px;
+	}
+	.deck-element{
+		width: 24px;
+		height: 24px;
 	}
 }
 
