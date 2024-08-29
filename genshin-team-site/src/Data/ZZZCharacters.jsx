@@ -1,5 +1,8 @@
 export const ZZZCharacterData = [
 	{
+		"name": "Blank"
+	},
+	{
 		"name": "Anby", "alt": "Anby Demara", "element": "Electric", "type": "Stun", "rarity": "4"
 	},
 	{

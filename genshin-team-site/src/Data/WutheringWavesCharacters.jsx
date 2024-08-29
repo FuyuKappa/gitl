@@ -1,4 +1,7 @@
 export const WuwaCharacterData = [
+	{	
+		"name": "Blank"
+	},
 	{
 		"name": "Aalto", "element": "Aero", "rarity": "4"
 	},
