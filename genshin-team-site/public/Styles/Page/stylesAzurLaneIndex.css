@@ -127,6 +127,43 @@ body{
 	width: calc(100% - 64px);
 }
 
+.edit-btn{
+	border-radius: 4px;
+	border: 1px solid white;
+	position: relative;
+	display: inline-block;
+	width: 32px;
+	min-width: 32px;
+	height: 32px;
+	margin: 0 4px;
+	top: 4px;
+}
+
+.edit-btn-active{
+	border: 1px solid black;
+}
+
+.team-container-false>.team-name>.edit-btn{
+	border: 1px solid white;
+}
+
+.team-container-true>.team-name>.edit-btn{
+	border: 1px solid black;
+}
+
+.edit-btn:hover{
+	transform: scale(1.2);
+	background-color: rgba(0,0,2, 0.2);
+}
+
+.edit-btn.check{
+	border: 1px solid green;
+}
+
+.edit-btn.cross{
+	border: 1px solid red;
+}
+
 .modal-global{
 	z-index: 10;
 	position: fixed;
