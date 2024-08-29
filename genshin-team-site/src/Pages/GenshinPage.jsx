@@ -8,7 +8,7 @@ import { SiteContext } from "../App"
 
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useMediaQuery } from 'react-responsive';
 import {GenshinCharacterData as data} from "../Data/GenshinCharacters"
 
@@ -17,6 +17,19 @@ export default function GenshinPage({currSite, setFromLocal}){
 	let teams = siteContext.teams;
 	let setTeams = siteContext.setTeams;
 	const teamSize = 4;
+	const [travelerPreference, setPreference] = useState(() => localStorage.getItem("TravelerPreference"));
+	if(travelerPreference === null || travelerPreference === undefined) localStorage.setItem("TravelerPreference", "M");
+	
+	function switchPreference(){
+			if(travelerPreference === "M"){
+				setPreference("F");
+				localStorage.setItem("TravelerPreference","F");
+			}
+			else{
+				setPreference("M");
+				localStorage.setItem("TravelerPreference","M");
+			}
+	}
 	
 	useEffect(() =>{
 		setFromLocal();
@@ -39,7 +52,7 @@ export default function GenshinPage({currSite, setFromLocal}){
 					<link rel="stylesheet" type="text/css" href="./Styles/TeamScreen/stylesGenshinTeamScreen.css" />
 				</Helmet>
 				
-				<Header currentSite={currSite} />
+				<Header currentSite={currSite} switchPreference={switchPreference}/>
 				<div className="content-wrapper">
 					{toggleTeamList()}
 					<TeamScreen teamSize={teamSize} currSite={currSite}/>
