@@ -108,8 +108,6 @@ export default function App() {
 	const [team, setTeam] = useState({});
 	
 	function previewTeam(teamStats){
-		console.log("here");
-		console.log(teamStats);
 		setTeam(teamStats);
 	}
 	
@@ -131,7 +129,7 @@ export default function App() {
 			
 		let switchActive = options.switchActive !== undefined ? options.switchActive : true;
 		let notifyUser = options.notifyUser !== undefined ? options.notifyUser : true;
-		console.log(notifyUser);
+
 		if(notifyUser) alert("Team saved!");
 		
 		let noteForms = document.querySelectorAll(".notes-form");
