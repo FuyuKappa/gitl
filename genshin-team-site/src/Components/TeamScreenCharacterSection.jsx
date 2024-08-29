@@ -7,7 +7,9 @@ export default function TeamScreenCharacterSection({character, note, index}){
 	let noteID = "note" + index; 
 	const context = useContext(SiteContext);
 	const currSite = useContext(TeamScreenContext).currSite;
-	const imgClass = "banner" + (character.name==="Blank"? " blank-banner" : "")
+	const travelerPreference = localStorage.getItem("TravelerPreference");
+	const imgClass = "banner" + (character.name==="Blank"? " blank-banner" : "");
+	let imgPath = "./" + currSite + "/Banner/" + character.name + ".png";
 	
 	function openModal(e){
 		e.stopPropagation();
@@ -19,6 +21,12 @@ export default function TeamScreenCharacterSection({character, note, index}){
 		setNote(() => {return e.target.value});
 	}
 	
+	if (currSite === "Genshin Impact" && character.name === "Traveler"){
+		let replacement;
+		travelerPreference === null || travelerPreference === undefined ? replacement = "M" : replacement = travelerPreference;
+		imgPath = "./" + currSite + "/Banner/" + character.name + replacement +  ".png";
+	}
+	
 	return(
 		<div className="team-character-section">
 			<div className="section-character-name" onClick={e => openModal(e)}>
@@ -28,7 +36,7 @@ export default function TeamScreenCharacterSection({character, note, index}){
 			</div>
 			
 			<div className="section-character-portrait" onClick={e => openModal(e)}>
-				 <img className={imgClass} src={"./" + currSite + "/Banner/" + character.name + ".png"} alt={character.name}></img>
+				 <img className={imgClass} src={imgPath} alt={character.name}></img>
 			</div>
 			
 			<div className="bg-gradient-up" onClick={e => openModal(e)}></div>
