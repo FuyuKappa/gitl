@@ -1,9 +1,7 @@
 import { useContext } from "react";
-
 import { SiteContext } from "../App";
 
 export default function NewTeamButton({teams, setTeams}){
-	//console.log(setTeams);
 	const context = useContext(SiteContext);
 	
 	return(

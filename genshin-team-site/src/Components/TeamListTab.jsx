@@ -19,7 +19,6 @@ export default function TeamListTab({teams, setTeams, teamSize, currSite}){
 		e.stopPropagation();
 		e.nativeEvent.stopImmediatePropagation();
 		if(e.target.className === "team-list-tab-blur") context.setShowTeams(false);
-		console.log(e.target.className);
 	}
 	
 	const value = {
