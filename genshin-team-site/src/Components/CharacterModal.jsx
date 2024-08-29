@@ -3,9 +3,8 @@ import { SiteContext } from "../App";
 import { default as CharacterSearch } from "./ModalSearch";
  
 export default function CharacterModal({character, position, data, currSite}){
-	console.log(character);
 	const context = useContext(SiteContext);
-	const [previewCharacter, setPreviewCharacter] = useState("Blank");
+	const [previewCharacter, setPreviewCharacter] = useState({name: "Blank"});
 	const previewRef = useRef(null);
 	
 	//Special thanks to: Ricardo Goncalves
@@ -51,14 +50,17 @@ export default function CharacterModal({character, position, data, currSite}){
 	}, [previewCharacter]);
 	
 	function editCharacter(newCharacter){
-		console.log(position);
-		if(Object.keys(newCharacter).length !== 0 && newCharacter.name !== "Blank"){
+		if(Object.keys(newCharacter).length !== 0){
 			context.setTeams(currentTeams => {
 				return currentTeams.map(team => {
 					if(context.team.id === team.id){
 						let characters = team.characters;
-						characters[position] = newCharacter;
-						console.log(position);
+						
+						if(newCharacter.name === "Blank")
+							characters[position] = null;
+						else
+							characters[position] = newCharacter;
+						
 						return {...team, characters: characters};
 					}
 					
@@ -70,7 +72,7 @@ export default function CharacterModal({character, position, data, currSite}){
 	}
 	
 	function CharacterPortrait({clickEvent, bgColor, name, element, className, character}){
-		if(bgColor === null || bgColor === undefined){
+		if((bgColor === null || bgColor === undefined) && character.name !== "Blank" ){
 			for(let i = 0; i < data.length; i++){
 				let currCharacter = data[i]
 				if(currCharacter.name === character.name){
@@ -81,19 +83,41 @@ export default function CharacterModal({character, position, data, currSite}){
 				}
 			}
 		}
-		return(
-			<div className={className} key={crypto.randomUUID()} onClick={clickEvent}>
-				<img src={"./"+ currSite + "/Portrait/" + character.name + ".png"} style={{background: bgColor}} alt={character.name}/>
-				
-				<div className="element-icon">
-					<img className="element-icon-image" src={"./"+ currSite + "/Element/" + character.element + ".png"} alt={character.element}/>
+		if(character.name !== undefined && character.name !== "Blank"){
+			let imgPath = "./"+ currSite + "/Portrait/" + character.name + ".png";
+			
+			if (currSite === "Genshin Impact" && character.name === "Traveler"){
+				let replacement;
+				let travelerPreference = localStorage.getItem("TravelerPreference");
+				travelerPreference === null || travelerPreference === undefined ? replacement = "M" : replacement = travelerPreference;
+				imgPath = "./"+ currSite + "/Portrait/" + character.name + replacement +".png";
+			}
+			return(
+				<div className={className} key={crypto.randomUUID()} onClick={clickEvent}>
+					<img src={imgPath} style={{background: bgColor}} alt={character.name}/>
+					
+					<div className="element-icon">
+						<img className="element-icon-image" src={"./"+ currSite + "/Element/" + character.element + ".png"} alt={character.element}/>
+					</div>
+					
+					<div className="portrait-name">
+						{character.name}
+					</div>
 				</div>
-				
-				<div className="portrait-name">
-					{character.name}
+			);
+		}
+		else{
+			let imgPath = "./"+ currSite + "/Portrait/AddCharacter.png";
+			return(
+				<div className={className} key={crypto.randomUUID()} onClick={clickEvent}>
+					<img src={imgPath} alt="Blank"/>
+					
+					<div className="portrait-name">
+						Blank
+					</div>
 				</div>
-			</div>
-		);
+			);
+		}
 	}
 	
 
