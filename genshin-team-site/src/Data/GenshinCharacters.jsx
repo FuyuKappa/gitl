@@ -1,5 +1,8 @@
 export const GenshinCharacterData = [
 	{
+		"name": "Blank"
+	},
+	{
 		"name": "Albedo", "element": "Geo", "rarity": "5"
 	},
 	{
@@ -108,6 +111,9 @@ export const GenshinCharacterData = [
 		"name": "Jean", "element": "Anemo", "rarity": "5"
 	},
 	{
+		"name": "Kachina", "element": "Geo", "rarity": "4"
+	},
+	{
 		"name": "Kaeya", "element": "Cryo", "rarity": "4"
 	},
 	{
@@ -144,6 +150,9 @@ export const GenshinCharacterData = [
 		"name": "Lyney", "element": "Pyro", "rarity": "5"
 	},
 	{
+		"name": "Mualani", "element": "Hydro", "rarity": "5"
+	},
+	{
 		"name": "Mika", "element": "Cryo", "rarity": "4"
 	},
 	{
@@ -166,6 +175,9 @@ export const GenshinCharacterData = [
 	},
 	{
 		"name": "Noelle", "element": "Geo", "rarity": "4"
+	},
+	{
+		"name": "Qiqi", "element": "Cryo", "rarity": "5"
 	},
 	{
 		"name": "Raiden Shogun", "alt": "Ei", "element": "Electro", "rarity": "5"
@@ -193,6 +205,21 @@ export const GenshinCharacterData = [
 	},
 	{
 		"name": "Sucrose", "element": "Anemo", "rarity": "4"
+	},
+	{
+		"name": "Traveler", "alt":"Anemo Traveler", "element": "Anemo", "rarity": "5"
+	},
+	{
+		"name": "Traveler", "alt":"Geo Traveler", "element": "Geo", "rarity": "5"
+	},
+	{
+		"name": "Traveler", "alt":"Electro Traveler", "element": "Electro", "rarity": "5"
+	},
+	{
+		"name": "Traveler", "alt":"Dendro Traveler", "element": "Dendro", "rarity": "5"
+	},
+	{
+		"name": "Traveler", "alt":"Hydro Traveler", "element": "Hydro", "rarity": "5"
 	},
 	{
 		"name": "Thoma", "element": "Pyro", "rarity": "4"
