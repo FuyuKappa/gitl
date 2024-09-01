@@ -58,19 +58,33 @@ export default function TeamContainer({team}){
 		)
 	}
 	
+	function save(e){
+		console.log(e.target);
+		let check;
+		if(e.target.className.indexOf("team-container ") !== -1)//it is team container
+			check = e.target;
+		else //not a team container
+			check = e.target.closest(".team-container");
+		
+		console.log(check);
+		if(check.className.indexOf("false") !== -1){ //is not selected
+			saveTeam({switchActive: true, notifyUser: false, teamSize: teamSize});
+			previewTeam(team);
+			toggleTeamActive(id);
+		}
+	}
+	
 	return(
-		<div className={className} onClick={() => {saveTeam({switchActive: true, notifyUser: false, teamSize: teamSize}); previewTeam(team); toggleTeamActive(id);}}>
+		<div className={className} onClick={(e) => save(e)}>
 			<div className="team-container-top">
 				<Name teamName={name} id={id} selected={active}/>
 				{currSite === "Genshin Impact" ? <ResonanceDeck /> : <></>}
 			</div>
+			
 			<hr style={{margin: '4px 8px'}} />
-				{/*Resnance deck (component = resonance deck)
-				//resonance icons
-				//character overview (map)
-				//<CharacterPortrait /> 4x (component = container-character-portrait)*/}
+			
 			<div className="container-character-deck">
-			{characterList}
+				{characterList}
 			</div>
 		</div>
 	)
