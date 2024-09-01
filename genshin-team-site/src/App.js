@@ -123,20 +123,24 @@ export default function App() {
 	
 	const [showTeams, setShowTeams] = useState(false);
 	
+	function getNoteValues(){
+		let noteForms = document.querySelectorAll(".notes-form");
+		let notes = [];
+		for(let i = 0; i < noteForms.length; i++)
+			notes[i]  = noteForms[i].value.trim();
+		
+		return notes;
+	}
+	
 	function saveTeam(options = {}){
 		if(Object.keys(team).length === 0) return;
-			
 			
 		let switchActive = options.switchActive !== undefined ? options.switchActive : true;
 		let notifyUser = options.notifyUser !== undefined ? options.notifyUser : true;
 
 		if(notifyUser) alert("Team saved!");
 		
-		let noteForms = document.querySelectorAll(".notes-form");
-		let notes = [];
-		for(let i = 0; i < noteForms.length; i++){
-			notes[i]  = noteForms[i].value.trim();
-		}
+		let notes = getNoteValues();
 		let description = document.querySelector(".description-text").value.trim();
 		let rotation = document.querySelector(".rotation-text").value.trim();
 		
@@ -160,7 +164,7 @@ export default function App() {
 		addToList, toggleTeamActive, currentTeamID: team.id,
 		setModalActive, modalActive ,team, openModal,
 		saveTeam, deleteFromList, currentEditingCharacter,
-		currentEditingPosition, showTeams, setShowTeams
+		currentEditingPosition, showTeams, setShowTeams, getNoteValues
 	}
 	
 	return (
