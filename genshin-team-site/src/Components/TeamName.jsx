@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect, useCallback } from 'react';
 import { SiteContext } from "../App";
 
 export default function TeamName(props){
@@ -33,6 +33,7 @@ export default function TeamName(props){
 	}
 	
 	function confirmEdit(id, newName, e){
+		let noTeamSelected = id === undefined ? true : false;
 		e.stopPropagation();
 		let diffFlag = false;
 		if(!id && id !== containerID){
@@ -43,24 +44,52 @@ export default function TeamName(props){
 			id = containerID;
 			diffFlag = true;
 		}
+		
+		let description;
+		let rotation;
 		context.saveTeam({notifyUser: false, switchTeams: true});
 		context.setTeams(currentTeams =>{
 			return currentTeams.map(currentTeam => {
-				if(currentTeam.id === id)
+				console.log(id);
+				if(currentTeam.id === id && !noTeamSelected){
+					description = document.querySelector(".description-text").value.trim();
+					rotation = document.querySelector(".rotation-text").value.trim();
+					return { ...currentTeam, description: description, rotation: rotation, name: newName};
+					
+				}
+				else if(currentTeam.id === id && noTeamSelected){
 					return { ...currentTeam, name: newName};
+				}
 				else
 					return currentTeam;
 			});
 		});
 		
-		let newTeam = context.teams.filter(team=>team.id===id)[0];
+		let newTeam = context.teams.filter(team=>team.id===id)[0];		
 		newTeam.name = newName;
+		if(!noTeamSelected){
+			newTeam.description = description;
+			newTeam.rotation = rotation;
+			newTeam.notes = context.getNoteValues();
+		}
+		
 		
 		//toggleTeamActive(id);
-		//only do this if we're not editing the same container
+		//only update team screen if we're not editing the same container
 		if(!diffFlag) context.previewTeam(newTeam);
 		setEditing(() => {return false});
 	}
+	
+	const handleEsc = useCallback((e) => {
+		if(e.key === "Escape")
+			cancelEdit(e);
+	}, []);
+	
+	useEffect(() => {
+		window.addEventListener("keydown", handleEsc);
+		
+		return () => window.removeEventListener("keydown", handleEsc);
+	},[handleEsc]);
 	
 	if(editing){
 		return(
@@ -74,7 +103,7 @@ export default function TeamName(props){
 							<line className="check-mark-line" x1="5" y1="13.5" x2="13.5" y2="2" />
 						</svg>
 					</div>
-					<div className="edit-btn cross" onClick={(e) => cancelEdit(e)}>
+					<div className="edit-btn cross" onClick={(e) => cancelEdit(e)} onKeyPress={(e) => {if(e.key === "Escape")cancelEdit(e)}}>
 						<svg width="16" height="16" className="cross-mark" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
 							<line className="cross-mark-line" x1="2.5" y1="2.5" x2="14" y2="14" />
 							<line className="cross-mark-line" x1="14" y1="2" x2="2.5" y2="14" />
