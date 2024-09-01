@@ -134,7 +134,7 @@ export default function App() {
 		
 		let noteForms = document.querySelectorAll(".notes-form");
 		let notes = [];
-		for(let i = 0; i < options.teamSize; i++){
+		for(let i = 0; i < noteForms.length; i++){
 			notes[i]  = noteForms[i].value.trim();
 		}
 		let description = document.querySelector(".description-text").value.trim();
