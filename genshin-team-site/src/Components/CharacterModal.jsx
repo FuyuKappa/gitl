@@ -1,4 +1,4 @@
-import { useContext, useState, useRef, useEffect } from "react";
+import { useContext, useState, useRef, useEffect, useCallback } from "react";
 import { SiteContext } from "../App";
 import { default as CharacterSearch } from "./ModalSearch";
  
@@ -48,6 +48,19 @@ export default function CharacterModal({character, position, data, currSite}){
 				fitText(section.querySelector(".portrait-name"));
 		}
 	}, [previewCharacter]);
+	
+	const handleEsc = useCallback((e) => {
+		if(e.key === "Escape")
+			context.setModalActive(false);
+	}, [context]);
+	
+	useEffect(() =>{
+		window.addEventListener('keydown', handleEsc);
+		
+		return () => {
+			window.removeEventListener('keydown', handleEsc);
+		};		
+	}, [handleEsc]);
 	
 	function editCharacter(newCharacter){
 		if(Object.keys(newCharacter).length !== 0){
