@@ -37,6 +37,9 @@ export const GenshinCharacterData = [
 	},
 	{
 		"name": "Candace", "element": "Hydro", "rarity": "4"
+	},	
+	{
+		"name": "Chasca", "element": "Anemo", "rarity": "5"
 	},
 	{
 		"name": "Charlotte", "element": "Cryo", "rarity": "4"
@@ -49,6 +52,9 @@ export const GenshinCharacterData = [
 	},
 	{
 		"name": "Chongyun", "element": "Cryo", "rarity": "4"
+	},
+	{
+		"name": "Citlali", "element": "Cryo", "rarity": "5"
 	},
 	{
 		"name": "Clorinde", "element": "Electro", "rarity": "5"
@@ -126,6 +132,9 @@ export const GenshinCharacterData = [
 		"name": "Keqing", "element": "Electro", "rarity": "5"
 	},
 	{
+		"name": "Kinich", "element": "Dendro", "rarity": "5"
+	},
+	{
 		"name": "Kirara", "element": "Dendro", "rarity": "4"
 	},
 	{
@@ -150,10 +159,13 @@ export const GenshinCharacterData = [
 		"name": "Lyney", "element": "Pyro", "rarity": "5"
 	},
 	{
-		"name": "Mualani", "element": "Hydro", "rarity": "5"
+		"name": "Mavuika", "element": "Pyro", "rarity": "5"
 	},
 	{
 		"name": "Mika", "element": "Cryo", "rarity": "4"
+	},
+	{
+		"name": "Mualani", "element": "Hydro", "rarity": "5"
 	},
 	{
 		"name": "Mona", "element": "Hydro", "rarity": "5"
@@ -175,6 +187,9 @@ export const GenshinCharacterData = [
 	},
 	{
 		"name": "Noelle", "element": "Geo", "rarity": "4"
+	},
+	{
+		"name": "Ororon", "element": "Electro", "rarity": "4"
 	},
 	{
 		"name": "Qiqi", "element": "Cryo", "rarity": "5"
@@ -244,6 +259,9 @@ export const GenshinCharacterData = [
 	},
 	{
 		"name": "Xiao", "element": "Anemo", "rarity": "5"
+	},
+	{
+		"name": "Xilonen", "element": "Geo", "rarity": "5"
 	},
 	{
 		"name": "Xingqiu", "element": "Hydro", "rarity": "4"
