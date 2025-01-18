@@ -16,6 +16,23 @@ export default function SiteHeader({currentSite, switchPreference}){
 		);
 	}
 	
+	function ExportData(){
+		let download = document.createElement("a");
+		let path = currentSite.replace(/ /g,"") + "Teams"; 
+		let jsonFile = new Blob([localStorage.getItem(path)], { type: "text/plain" }); 
+		
+		download.href = URL.createObjectURL(jsonFile);
+		download.download = path + ".json"
+		download.click();
+		
+		download.remove();
+		
+	}
+	
+	function ImportData(){
+				
+	}
+	
 	return(
 		<div className="site-header">
 			<div className="site-header-left">
@@ -29,7 +46,9 @@ export default function SiteHeader({currentSite, switchPreference}){
 				{ currentSite === "Genshin Impact" ? <GenshinTravelerPreferenceSet /> : <></>}
 			</div>
 			<div className="site-header-right">
-				<a href="/" style={{"float":"right", "position":"relative"}}>Home</a>
+				<span onClick = {() => ImportData()}>Import Data |</span>
+				<span onClick = {() => ExportData()}> Export Data </span>
+				<a href="/" style={{"float":"right", "position":"relative"}}> Home</a>
 			</div>
 		</div>
 	);
