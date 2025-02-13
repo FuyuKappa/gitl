@@ -9,6 +9,12 @@ export const WuwaCharacterData = [
 		"name": "Baizhi", "element": "Glacio", "rarity": "4"
 	},
 	{
+		"name": "Camellya", "element": "Havoc", "rarity": "5"
+	},
+	{
+		"name": "Carlotta", "element": "Glacio", "rarity": "5"
+	},
+	{
 		"name": "Calcharo", "element": "Electro", "rarity": "5"
 	},
 	{
@@ -36,7 +42,16 @@ export const WuwaCharacterData = [
 		"name": "Lingyang", "element": "Glacio", "rarity": "5"
 	},
 	{
+		"name": "Lumi", "element": "Electro", "rarity": "4"
+	},
+	{
 		"name": "Mortefi", "element": "Fusion", "rarity": "5"
+	},
+	{
+		"name": "Phoebe", "element": "Spectro", "rarity": "5"
+	},
+	{
+		"name": "Roccia", "element": "Havoc", "rarity": "5"
 	},
 	{
 		"name": "Rover", "element": "Havoc", "rarity": "5"
@@ -48,10 +63,16 @@ export const WuwaCharacterData = [
 		"name": "Sanhua", "element": "Glacio", "rarity": "4"
 	},
 	{
+		"name": "Shorekeeper", "element": "Spectro", "rarity": "5"
+	},
+	{
 		"name": "Taoqi", "element": "Havoc", "rarity": "4"
 	},
 	{
 		"name": "Verina", "element": "Spectro", "rarity": "5"
+	},
+	{
+		"name": "Xiangli Yao", "element": "Electro", "rarity": "5"
 	},
 	{
 		"name": "Yangyang", "element": "Aero", "rarity": "4"
@@ -61,6 +82,9 @@ export const WuwaCharacterData = [
 	},
 	{
 		"name": "Yuanwu", "element": "Electro", "rarity": "4"
+	},
+	{
+		"name": "Youhu", "element": "Glacio", "rarity": "4"
 	},
 	{
 		"name": "Zhezhi", "element": "Glacio", "rarity": "5"
