@@ -45,7 +45,7 @@ export const WuwaCharacterData = [
 		"name": "Lumi", "element": "Electro", "rarity": "4"
 	},
 	{
-		"name": "Mortefi", "element": "Fusion", "rarity": "5"
+		"name": "Mortefi", "element": "Fusion", "rarity": "4"
 	},
 	{
 		"name": "Phoebe", "element": "Spectro", "rarity": "5"
