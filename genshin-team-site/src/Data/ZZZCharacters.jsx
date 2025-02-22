@@ -9,10 +9,19 @@ export const ZZZCharacterData = [
 		"name": "Anton", "alt": "Anton Ivanov", "element": "Electric", "type": "Attack", "rarity": "4"
 	},
 	{
+		"name": "Astra Yao", "element": "Ether", "type": "Support", "rarity": "5"
+	},
+	{
 		"name": "Ben", "alt": "Ben Bigger", "element": "Fire", "type": "Defence", "rarity": "4"
 	},
 	{
 		"name": "Billy", "alt": "Billy Kid", "element": "Physical", "type": "Attack", "rarity": "4"
+	},
+	{
+		"name": "Burnice", "alt": "Burnice White", "element": "Fire", "type": "Anomaly", "rarity": "5"
+	},
+	{
+		"name": "Caesar", "alt": "Caesar King", "element": "Physical", "type": "Defense", "rarity": "5"
 	},
 	{
 		"name": "Corin", "alt": "Corin Wickes", "element": "Physical", "type": "Attack", "rarity": "4"
@@ -21,7 +30,13 @@ export const ZZZCharacterData = [
 		"name": "Ellen", "alt": "Ellen Joe", "element": "Ice", "type": "Attack", "rarity": "5"
 	},
 	{
+		"name": "Evelyn", "alt": "Evelyn Chevalier", "element": "Fire", "type": "Attack", "rarity": "5"
+	},
+	{
 		"name": "Grace", "alt": "Grace Howard", "element": "Electric", "type": "Anomaly", "rarity": "5"
+	},
+	{
+		"name": "Harumasa", "alt": "Harumasamasa Asaba Harumasa", "element": "Electric", "type": "Attack", "rarity": "5"
 	},
 	{
 		"name": "Jane Doe", "element": "Physical", "type": "Anomaly", "rarity": "5"
@@ -30,7 +45,13 @@ export const ZZZCharacterData = [
 		"name": "Koleda", "alt": "Koleda Belobog", "element": "Fire", "type": "Stun", "rarity": "5"
 	},
 	{
+		"name": "Lighter", "alt": "Red Scarf", "element": "Fire", "type": "Stun", "rarity": "5"
+	},
+	{
 		"name": "Lucy", "alt": "Luciana de Montefio", "element": "Fire", "type": "Support", "rarity": "4"
+	},
+	{
+		"name": "Miyabi", "alt": "Hoshimi Miyabi", "element": "Frost", "type": "Anomaly", "rarity": "5"
 	},
 	{
 		"name": "Nekomata", "alt": "Nekomiya Mana", "element": "Physical", "type": "Attack", "rarity": "5"
@@ -58,6 +79,9 @@ export const ZZZCharacterData = [
 	},
 	{
 		"name": "Lycaon", "alt": "Von Lycaon", "element": "Ice", "type": "Stun", "rarity": "5"
+	},
+	{
+		"name": "Yanagi", "alt": "Tsukishiro Yanagi", "element": "Electric", "type": "Anomaly", "rarity": "5"
 	},
 	{
 		"name": "Zhu Yuan", "element": "Ether", "type": "Attack", "rarity": "5"
